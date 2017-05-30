@@ -4,12 +4,14 @@
   "description": "Daybatable client",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d --watch",
-    "prod": "webpack -p"
+    "dev": "webpack-dev-server -d --watch",
+    "prod": "webpack -p",
+    "start": "npm run prod"
   },
   "author": "Rob Cornacchia",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "css-loader": "^0.28.2",

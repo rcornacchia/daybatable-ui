@@ -8,12 +8,12 @@ const enhancer = compose(
 );
 
 const initialState = { 
-    forArgs: [],
-    againstArgs: [],
+    for: [],
+    against: [],
 };
 
 export default function configureStore() {
-    const store = createStore(argumentsReducer, initialState, enhancer);
+    const store = createStore(rootReducer, enhancer);
 
     return store;
 }

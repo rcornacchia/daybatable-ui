@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import argumentsReducer from './arguments';
 
 const rootReducer = combineReducers({
-    argumentsReducer,
+    arguments: argumentsReducer,
 })
 
 export default rootReducer;

@@ -10,12 +10,13 @@ class App extends Component {
     const againstArgs = args.against;
 
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className='App'>
+        <div className='App-header'>
           <h2>Daybatable</h2>
+          <button className='login-btn'>Login</button>
         </div>
-        <Arguments position='for' args={forArgs} />
-        <Arguments position='against' args={againstArgs} />
+        <Arguments position='for' />
+        <Arguments position='against' />
       </div>
     );
   }
