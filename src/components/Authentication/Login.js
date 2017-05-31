@@ -11,7 +11,7 @@ class Login extends Component {
       password: null
     }
     this.handleChange = this.handleChange.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
+    this.login = this.login.bind(this);
   }
 
   handleChange(event) {
@@ -23,8 +23,7 @@ class Login extends Component {
     });
   }
 
-  submitHandler(event) {
-    console.log(this.state);
+  login() {
     const { username, password } = this.state;
     login(username, password);
   }
@@ -45,7 +44,7 @@ class Login extends Component {
                    onChange={this.handleChange}/>
           </label>
         </form>
-        <button onClick={this.submitHandler}>Login</button>
+        <button onClick={this.login}>Login</button>
       </div>
     )
   }
