@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Arguments from './containers/Arguments/Arguments';
-import './App.css';
+import Login from './components/Authentication/Login';
 import { args } from './model/mock-payload';
-
+import './App.scss';
 
 class App extends Component {
   render() {
@@ -13,10 +13,8 @@ class App extends Component {
       <div className='App'>
         <div className='App-header'>
           <h2>Daybatable</h2>
-          <button className='login-btn'>Login</button>
         </div>
-        <Arguments position='for' />
-        <Arguments position='against' />
+        <Login />
       </div>
     );
   }

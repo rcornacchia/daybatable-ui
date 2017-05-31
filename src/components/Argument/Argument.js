@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Argument.css';
+import './Argument.scss';
 
 class Argument extends Component {
     constructor(props) {

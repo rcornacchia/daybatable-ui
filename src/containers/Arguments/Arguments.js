@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Arguments.css';
 import Argument from '../../components/Argument/Argument';
+import './Arguments.scss';
 
 class Arguments extends Component {
   render() {
     const { position, args } = this.props;
-    console.log(this.props);
-    // args.sort(args.votes);
 
     return (
       <div className='Arguments'>
@@ -16,7 +14,7 @@ class Arguments extends Component {
         </div>
         {
           !!args && args.map((arg, i) => {
-            return <Argument key={`forArg_${i}`} arg={arg} position={position}></Argument>
+            return <Argument key={`${position}-${i}`} arg={arg} position={position}></Argument>
           })
         }
       </div>
