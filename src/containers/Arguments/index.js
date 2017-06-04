@@ -9,7 +9,7 @@ class Arguments extends Component {
 
     return (
       <div className='Arguments'>
-        <div className="position">
+        <div className='position'>
           <h2>{position}</h2>
         </div>
         {

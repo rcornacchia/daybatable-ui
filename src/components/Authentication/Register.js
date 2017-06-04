@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { register } from './api';
+import './Register.scss';
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className='register-form'>
         <form className='register-form'>
           <label>
             email

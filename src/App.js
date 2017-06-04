@@ -1,33 +1,22 @@
-import React, { Component } from 'react';
-import Arguments from './containers/Arguments/Arguments';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ArgumentsLayout from './layouts/ArgumentsLayout';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
+import Header from './components/Header';
 import { args } from './model/mock-payload';
 import './App.scss';
 
-class App extends Component {
-  render() {
-    const forArgs = args.for;
-    const againstArgs = args.against;
+const App = () => (
+  <Router>
+    <div className='app'>
+      <Header />
 
-    return (
-      <div className='App'>
-        <div className='App-header'>
-          <h2>Daybatable</h2>
-        </div>
-        <div>
-          <Login />
-        </div>
-        <div>
-          <Register />
-        </div>
-        <div>
-          <Arguments position='for' />
-          <Arguments position='against' />
-        </div>
-      </div>
-    );
-  }
-}
+      <Route exact path='/'         component={ArgumentsLayout} />
+      <Route       path='/login'    component={Login} />
+      <Route       path='/register' component={Register} />
+    </div>
+  </Router>
+);
 
 export default App;

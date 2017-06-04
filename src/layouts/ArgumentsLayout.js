@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Arguments from '../containers/Arguments';
 
-class ArgumentsLayout extends Component {
-  render() {
-    return (
-      <div className='arguments-layout'>
-        <Arguments position='for' />
-        <Arguments position='against' />
-      </div>
-    )
-  }
-}
+const ArgumentsLayout = () => (
+  <div className='arguments-layout'>
+    <Arguments position='for' />
+    <Arguments position='against' />
+  </div>
+)
+
+export default ArgumentsLayout;

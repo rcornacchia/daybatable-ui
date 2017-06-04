@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='loginForm'>
+      <div className='login-container'>
         <form className='login-form'>
           <label>
             username
