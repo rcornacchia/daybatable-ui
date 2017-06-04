@@ -11,7 +11,8 @@ class Register extends Component {
       password: null,
       email: null,
       firstName: null,
-      lastName: null
+      lastName: null,
+      warning: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.register = this.register.bind(this);
@@ -28,10 +29,16 @@ class Register extends Component {
 
   register() {
     const { username, password, email, firstName, lastName } = this.state;
-    register(username, password, email, firstName, lastName); 
+    if (!username || !password || !email || !firstName || !lastName) {
+      this.setState({ warning: 'Please fill out all fields.' });
+    } else {
+      register(username, password, email, firstName, lastName); 
+    }
   }
 
   render() {
+    const warning = this.state.warning;
+
     return (
       <div className='register-form'>
         <form className='register-form'>
@@ -62,6 +69,7 @@ class Register extends Component {
                    onChange={this.handleChange} />
           </label>
         </form>
+        { !!warning && <div>{this.state.warning}</div> }
         <button onClick={this.register}>Register</button>
       </div>
     );

@@ -8,8 +8,8 @@ const Header = () => {
     <div className='header-container'>
       <Link to='/' className='link'>Daybatable</Link>
       <div className='auth-links'>
-        <Link to='/login' className='link'>Login</Link>
-        <Link to='register' className='link'>Register</Link>
+        <Link to='/login' className='link auth-link'>Login</Link>
+        <Link to='register' className='link auth-link'>Register</Link>
       </div>
     </div>
   );
