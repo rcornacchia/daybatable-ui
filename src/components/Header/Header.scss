@@ -5,12 +5,18 @@
   color: #FFF;
 }
 
+.navbar {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .link {
   color: white;
   text-decoration: none;
 }
 
-.auth-links {
+.navbar-right {
   float: right;
 
   .auth-link {
