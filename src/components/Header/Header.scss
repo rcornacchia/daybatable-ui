@@ -9,6 +9,14 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 20px;
+
+  .debate-topic {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .link {
@@ -19,8 +27,11 @@
 .navbar-right {
   float: right;
 
-  .auth-link {
+  .right-link {
     margin-left: 10px;
+    border-radius: 2px;
+    border: 1px solid #FFF;
+    padding: 10px;
   }
 }
 
