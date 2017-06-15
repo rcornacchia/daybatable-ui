@@ -15,16 +15,16 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "sass-loader?sourceMap"]
+                loaders: ['style-loader', 'css-loader', 'sass-loader?sourceMap']
             },
-            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
             {
                 test: /\.(jsx|js)?$/,
                 loader: 'babel-loader',
                 exclude: /(node_modules)/,
                 include: path.join(__dirname, 'src'),
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react', 'stage-0']
                 }
             },
             {
@@ -34,7 +34,7 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, "public"),
+        contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 8080,
         historyApiFallback: true
