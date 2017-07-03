@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 import { register } from './api';
 import './Register.scss';
 

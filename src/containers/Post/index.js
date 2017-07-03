@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 import './Post.scss';
 
 class Post extends Component {
@@ -11,8 +12,8 @@ class Post extends Component {
           
           <label>
             Argument
-            <textarea name='argument'
-                      onChange={this.handleChange} />
+            <Field name='argument'
+              component='textarea' />
           </label>
           <button className='submit-btn'>Submit</button>
         </form>
@@ -21,4 +22,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default reduxForm({ form: 'post' })(Post);

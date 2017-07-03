@@ -1,15 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router';
 import Header from './components/Header';
 import ArgumentsLayout from './layouts/ArgumentsLayout';
 import Login from './containers/Login';
 import Register from './containers/Register';
-import Post from './components/Post';
+import Post from './containers/Post';
 import { args } from './model/mock-payload';
 import './App.scss';
 
-const App = () => (
-  <Router>
+const App = props => (
+  <Router history={props.history}>
     <div className='app'>
       <Header />
 

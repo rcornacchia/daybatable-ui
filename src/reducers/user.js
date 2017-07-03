@@ -10,11 +10,12 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.LOGIN_SUCCESS:
-      const { username } = action.response.data.user;
+      const { username, _id } = action.response.data.user;
 
       return {
         loggedIn: true,
-        username
+        username,
+        id: _id
       }
     case actions.LOGOUT:
       return {
