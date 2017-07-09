@@ -4,32 +4,30 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers';
 import App from './App';
+import Login from './containers/Login';
+import Register from './containers/Register';
+import ArgumentsLayout from './layouts/ArgumentsLayout';
 import DevTools from './containers/DevTools';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, Route, browserHistory } from 'react-router';
-import { createBrowserHistory } from 'history';
-import Login from './containers/Login';
+import { Route, IndexRoute, browserHistory, Router } from 'react-router';
+import { syncHistory, syncParams} from 'react-router-redux-params';
+import { routes } from './routes';
 
 const store = configureStore(rootReducer);
-const history = syncHistoryWithStore(createBrowserHistory(), store)
+syncParams(store, routes, browserHistory);
 
 render(
   <Provider store={store}>
     <div>
-      <App history={history}/>
+      <Router history={browserHistory}>
+        <Route path='/' component={App}>
+          <IndexRoute component={ArgumentsLayout} />
+          <Route path="login" component={Login} />
+          <Route path="register" component={Register} />
+        </Route>
+      </Router>
       <DevTools />
     </div>
   </Provider>,
   document.getElementById('root')
 );
-
-// render(
-//   <Provider store={store}>
-//     <Router history={history}>
-//       <Route path="/" component={App}>
-
-//       </Route>
-//     </Router>
-//   </Provider>,
-//   document.getElementById('root')
-// )

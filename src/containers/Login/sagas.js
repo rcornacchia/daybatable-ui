@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import * as actions from './actionTypes';
 import { login } from './api';
 
@@ -25,6 +26,8 @@ function* loginSuccessSaga(action) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('username', data.user.username);
   }
+
+  yield put(push('/'));
 }
 
 export default rootSaga;

@@ -8,17 +8,11 @@ import Post from './containers/Post';
 import { args } from './model/mock-payload';
 import './App.scss';
 
-const App = props => (
-  <Router history={props.history}>
-    <div className='app'>
-      <Header />
-
-      <Route exact path='/'         component={ArgumentsLayout} />
-      <Route       path='/login'    component={Login} />
-      <Route       path='/register' component={Register} />
-      <Route       path='/post'     component={Post} />
-    </div>
-  </Router>
+const App = ({ children }) => (
+  <div className='app'>
+    <Header />
+    {children}
+  </div>
 );
 
 export default App;
