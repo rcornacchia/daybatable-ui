@@ -11,10 +11,12 @@ import { syncHistory, syncParams} from 'react-router-redux-params';
 import { browserHistory } from 'react-router';
 
 const sagaMiddleware = createSagaMiddleware();
+const routingMiddleware = routerMiddleware(browserHistory)
 
 const enhancer = compose(
   applyMiddleware(
     sagaMiddleware,
+    routingMiddleware,
     syncHistory(browserHistory)),
   DevTools.instrument()
 );

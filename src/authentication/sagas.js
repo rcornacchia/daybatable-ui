@@ -1,4 +1,5 @@
-import { takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import * as actions from './actionTypes';
 
 const rootSaga = function* rootSaga() {
@@ -8,6 +9,7 @@ const rootSaga = function* rootSaga() {
 function* logoutSaga() {
   localStorage.removeItem('token');
   localStorage.removeItem('username');
+  yield put(push('/'));
 }
 
 export default rootSaga;

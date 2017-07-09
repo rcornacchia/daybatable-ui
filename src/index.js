@@ -6,6 +6,7 @@ import rootReducer from './reducers';
 import App from './App';
 import Login from './containers/Login';
 import Register from './containers/Register';
+import Post from './containers/Post';
 import ArgumentsLayout from './layouts/ArgumentsLayout';
 import DevTools from './containers/DevTools';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -23,7 +24,7 @@ render(
         <Route path='/' component={App}>
           <IndexRoute component={ArgumentsLayout} />
           <Route path="login" component={Login} />
-          <Route path="register" component={Register} />
+          <Route path="post" component={Post} />
         </Route>
       </Router>
       <DevTools />
