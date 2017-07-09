@@ -11,8 +11,7 @@ const rootSaga = function* rootSaga() {
 function* loginSaga() {
   try {
     const data = yield select(state => state.form.login.values);
-    const { username, password } = data;
-    const response = yield call(login, username, password);
+    const response = yield call(login, data);
     yield put({ type: actions.LOGIN_SUCCESS, response });
   } catch (e) {
     yield put({ type: actions.LOGIN_FAIL, error: e });

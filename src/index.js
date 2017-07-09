@@ -9,13 +9,9 @@ import Register from './containers/Register';
 import Post from './containers/Post';
 import ArgumentsLayout from './layouts/ArgumentsLayout';
 import DevTools from './containers/DevTools';
-import { syncHistoryWithStore } from 'react-router-redux';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
-import { syncHistory, syncParams} from 'react-router-redux-params';
-import { routes } from './routes';
 
 const store = configureStore(rootReducer);
-syncParams(store, routes, browserHistory);
 
 render(
   <Provider store={store}>
@@ -24,6 +20,7 @@ render(
         <Route path='/' component={App}>
           <IndexRoute component={ArgumentsLayout} />
           <Route path="login" component={Login} />
+          <Route path="register" component={Register} />
           <Route path="post" component={Post} />
         </Route>
       </Router>
