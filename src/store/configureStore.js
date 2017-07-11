@@ -6,6 +6,7 @@ import rootReducer from '../reducers';
 import loginSaga from '../containers/Login/sagas';
 import authenticationSaga from '../authentication/sagas';
 import postSaga from '../containers/Post/sagas';
+import rootSaga from '../sagas';
 import DevTools from '../containers/DevTools';
 import { history } from '../';
 import { syncHistory, syncParams} from 'react-router-redux-params';
@@ -27,6 +28,7 @@ export default function configureStore() {
   sagaMiddleware.run(loginSaga);
   sagaMiddleware.run(authenticationSaga);
   sagaMiddleware.run(postSaga);
+  sagaMiddleware.run(rootSaga);
 
   return store;
 }

@@ -1,10 +1,9 @@
 import axios from 'axios';
+import config from './config';
 
-export const get = url => {
-  return axios.get(url, headers);
-}
+export const get = url => axios.get(url, { headers });
 
-export const post = (url, data) => (axios.post(url, data, { headers }));
+export const post = (url, data) => axios.post(url, data, { headers });
 
 const headers = {
   'Authorization': 'Bearer ' + getToken()
@@ -12,4 +11,9 @@ const headers = {
 
 function getToken() {
   return localStorage.getItem('token');
+}
+
+export const init = () => {
+  const url = `${config.server}/api/init`;
+  return get(url);
 }

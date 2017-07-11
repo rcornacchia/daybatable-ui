@@ -12,6 +12,7 @@ import DevTools from './containers/DevTools';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
 
 const store = configureStore(rootReducer);
+store.dispatch({ type: 'INIT' });
 
 render(
   <Provider store={store}>
