@@ -1,10 +1,12 @@
 import * as actions from '../authentication/actionTypes';
 const token = localStorage.getItem('token') || null;
 const username = localStorage.getItem('username') || null;
+const userId = localStorage.getItem('userId')
 
 const initialState = {
   loggedIn: !!username,
-  username
+  username,
+  userId
 }
 
 const userReducer = (state = initialState, action) => {
@@ -15,7 +17,7 @@ const userReducer = (state = initialState, action) => {
       return {
         loggedIn: true,
         username,
-        id: _id
+        userId: _id
       }
     case actions.LOGOUT:
       return {

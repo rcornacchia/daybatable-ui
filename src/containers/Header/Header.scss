@@ -1,0 +1,43 @@
+a {
+  cursor: pointer;
+}
+
+.header-container {
+  background-color: #222;
+  height: 50px;
+  padding: 20px;
+  color: #FFF;
+}
+
+.navbar {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+
+  .debate-topic {
+    position: relative;
+    display: inline-block;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+
+
+.navbar-right {
+  float: right;
+
+  .right-link {
+    margin-left: 10px;
+    border-radius: 2px;
+    border: 1px solid #FFF;
+    padding: 10px;
+  }
+}
+

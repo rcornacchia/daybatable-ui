@@ -1,0 +1,10 @@
+Get static data into the server
+Post request
+INIT => get debate/debateId/arguments
+Server side rendering
+
+
+
+Architectural concerns:
+  + How to denote current debate
+  + How to save current user's votes to prevent double voting
