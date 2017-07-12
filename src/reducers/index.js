@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
-import argumentsReducer from './arguments';
+import postReducer from './post';
 import debateReducer from './debate';
 import userReducer from './user';
 
 const rootReducer = combineReducers({
-    arguments: argumentsReducer,
+    posts: postReducer,
     debate: debateReducer,
     form: formReducer,
     routing: routerReducer,

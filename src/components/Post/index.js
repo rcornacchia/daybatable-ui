@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Argument.scss';
+import './Post.scss';
 
-class Argument extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,13 +20,13 @@ class Argument extends Component {
         const { position, arg } = this.props;
 
         return (
-            <div className={`argument ${position}`}>
+            <div className={`post ${position}`}>
                 <a className='vote-btn' onClick={this.incrementVote}>+</a>
-                <p className="argument-body votes">{this.state.votes}</p>
-                <p className="argument-body">{arg.text}</p>
+                <p className="post-body votes">{this.state.votes}</p>
+                <p className="post-body">{arg.post}</p>
             </div>
         )
     }
 }
 
-export default Argument;
+export default Post;

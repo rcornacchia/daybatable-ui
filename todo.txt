@@ -1,8 +1,8 @@
-Get static data into the server
-Post request
+Post request:
+  + send debateId and userId
+  + make sure all fields are filled out
 INIT => get debate/debateId/arguments
 Server side rendering
-
 
 
 Architectural concerns:

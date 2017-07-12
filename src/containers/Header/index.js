@@ -5,8 +5,9 @@ import './Header.scss';
 
 class Header extends Component {
   render() {
-    const { logout, user } = this.props;
+    const { logout, user, debate } = this.props;
     const { username } = user;
+    const { topic } = debate;
 
     let navRight = (
       <div>
@@ -31,7 +32,7 @@ class Header extends Component {
         <div className='navbar'>
           <Link to='/' className='link'>Daybatable</Link>
           <div className='debate-topic'>
-            The chicken came before the egg.
+            {topic}
           </div>
           <div className='navbar-right'>
             {navRight}
@@ -44,7 +45,8 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    debate: state.debate
   }
 }
 

@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Argument from '../../components/Argument/Argument';
-import './Arguments.scss';
+import Post from '../../components/Post';
+import './Posts.scss';
 
-class Arguments extends Component {
+class Posts extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps){
+      this.props = null;
+      this.props = nextProps;
+    }
+  }
+
   render() {
     const { position, args } = this.props;
-
+    
     return (
-      <div className='Arguments'>
+      <div className='Posts'>
         <div className='position'>
           <h2>{position}</h2>
         </div>
         {
-          !!args && args.map((arg, i) => {
-            return <Argument key={`${position}-${i}`} arg={arg} position={position}></Argument>
+          !!args && Object.keys(args).map((arg, i) => {
+            return <Post key={`${position}-${i}`} arg={args[arg]} position={position} />
           })
         }
       </div>
@@ -24,8 +31,8 @@ class Arguments extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    args: state.arguments[props.position]
+    args: state.posts[props.position]
   }
 }
 
-export default connect(mapStateToProps)(Arguments);
+export default connect(mapStateToProps)(Posts);

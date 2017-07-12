@@ -2,7 +2,7 @@ const initialState = {
   debateId: null,
   topic: null,
   votesFor: null,
-  votesAgainst: null,
+  votesAgainst: null
 }
 
 const debateReducer = (state = initialState, action) => {
