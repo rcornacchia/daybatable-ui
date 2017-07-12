@@ -28,6 +28,11 @@ const postReducer = (state = initialState, action) => {
         ...allPosts
       };
     }
+    case 'UPVOTE': {
+      const { _id, position } = action.payload;
+      if (_id && position) allPosts.position._id += 1;
+      // TODO: send upvote to server
+    }
     default:
       return state;
   }

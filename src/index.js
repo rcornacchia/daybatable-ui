@@ -7,7 +7,7 @@ import App from './App';
 import Login from './containers/Login';
 import Register from './containers/Register';
 import Post from './containers/Post';
-import ArgumentsLayout from './layouts/ArgumentsLayout';
+import PostsLayout from './layouts/PostsLayout';
 import DevTools from './containers/DevTools';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
 
@@ -19,7 +19,7 @@ render(
     <div>
       <Router history={browserHistory}>
         <Route path='/' component={App}>
-          <IndexRoute component={ArgumentsLayout} />
+          <IndexRoute component={PostsLayout} />
           <Route path="login" component={Login} />
           <Route path="register" component={Register} />
           <Route path="post" component={Post} />

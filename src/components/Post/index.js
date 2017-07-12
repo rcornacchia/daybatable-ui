@@ -2,31 +2,28 @@ import React, { Component } from 'react';
 import './Post.scss';
 
 class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            votes: this.props.arg.votes
-        };
-        this.incrementVote = this.incrementVote.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.incrementVote = this.incrementVote.bind(this);
+  }
 
-    incrementVote() {
-        this.setState({
-            votes: this.state.votes + 1
-        });
-    }
+incrementVote() {
+  const { upvote } = this.props;
+  console.log(upvote);
+  upvote(); 
+}
 
-    render() {
-        const { position, arg } = this.props;
+  render() {
+    const { position, post, upvote } = this.props;
 
-        return (
-            <div className={`post ${position}`}>
-                <a className='vote-btn' onClick={this.incrementVote}>+</a>
-                <p className="post-body votes">{this.state.votes}</p>
-                <p className="post-body">{arg.post}</p>
-            </div>
-        )
-    }
+    return (
+      <div className={`post ${position}`}>
+        <a className='vote-btn' onClick={this.incrementVote}>+</a>
+        <p className="post-body votes">{post.votes}</p>
+        <p className="post-body">{post.post}</p>
+      </div>
+    )
+  }
 }
 
 export default Post;

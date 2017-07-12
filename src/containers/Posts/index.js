@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from '../../components/Post';
+import { upvote } from './actions';
 import './Posts.scss';
 
 class Posts extends Component {
@@ -12,7 +13,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { position, args } = this.props;
+    const { position, posts, upvote } = this.props;
     
     return (
       <div className='Posts'>
@@ -20,8 +21,11 @@ class Posts extends Component {
           <h2>{position}</h2>
         </div>
         {
-          !!args && Object.keys(args).map((arg, i) => {
-            return <Post key={`${position}-${i}`} arg={args[arg]} position={position} />
+          !!posts && Object.keys(posts).map((post, i) => {
+            return <Post key={`${position}-${i}`} 
+              post={posts[post]} 
+              position={position}
+              upvote={upvote} />
           })
         }
       </div>
@@ -31,8 +35,14 @@ class Posts extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    args: state.posts[props.position]
+    posts: state.posts[props.position]
   }
 }
 
-export default connect(mapStateToProps)(Posts);
+const mapDispatchToProps = dispatch => {
+  return {
+    upvote: (data) => dispatch(upvote(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
