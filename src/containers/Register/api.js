@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-export function register(username, password, email, firstName, lastName) {
+export function register(payload) {
   const url = 'http://localhost:3000/auth/register';
-
-  axios.post(url, { username, password, email, firstName, lastName });
+  return axios.post(url, payload);
 }

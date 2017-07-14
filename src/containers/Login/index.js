@@ -17,13 +17,13 @@ class Login extends Component {
         <form className='login-form' onSubmit={this.submit} >
           <div>
             <label>username</label>
-            <Field name="username"
+            <Field name='username'
               component='input'
               type='text' />
           </div>
           <div>
             <label>password</label>
-            <Field name="password"
+            <Field name='password'
               component='input'
               type='password' />
           </div>

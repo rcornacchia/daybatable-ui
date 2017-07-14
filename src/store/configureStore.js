@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
 import loginSaga from '../containers/Login/sagas';
+import registerSaga from '../containers/Register/sagas';
 import authenticationSaga from '../authentication/sagas';
 import postSaga from '../containers/Post/sagas';
 import rootSaga from '../sagas';
@@ -26,6 +27,7 @@ const enhancer = compose(
 export default function configureStore() {
   const store = createStore(rootReducer, enhancer);
   sagaMiddleware.run(loginSaga);
+  sagaMiddleware.run(registerSaga);
   sagaMiddleware.run(authenticationSaga);
   sagaMiddleware.run(postSaga);
   sagaMiddleware.run(rootSaga);

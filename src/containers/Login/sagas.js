@@ -9,12 +9,12 @@ const rootSaga = function* rootSaga() {
 }
 
 function* loginSaga() {
+  const payload = yield select(state => state.form.login.values);
   try {
-    const data = yield select(state => state.form.login.values);
-    const response = yield call(login, data);
+    const response = yield call(login, payload);
     yield put({ type: actions.LOGIN_SUCCESS, response });
-  } catch (e) {
-    yield put({ type: actions.LOGIN_FAIL, error: e });
+  } catch (error) {
+    yield put({ type: actions.LOGIN_FAIL, error });
   }
 }
 
