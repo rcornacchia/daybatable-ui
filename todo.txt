@@ -1,10 +1,16 @@
+Send upvote to server
 Post request:
-  + send debateId and userId
   + make sure all fields are filled out
 INIT => get debate/debateId/arguments
+Check for valid token, if invalid => relogin
+add https
 Server side rendering
+Maybe use immutable js
 
 
 Architectural concerns:
   + How to denote current debate
   + How to save current user's votes to prevent double voting
+
+
+How do you quickly add to an object

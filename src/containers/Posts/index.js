@@ -5,13 +5,6 @@ import { upvote } from './actions';
 import './Posts.scss';
 
 class Posts extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps){
-      this.props = null;
-      this.props = nextProps;
-    }
-  }
-
   render() {
     const { position, posts, upvote } = this.props;
     

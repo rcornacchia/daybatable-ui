@@ -1,20 +1,20 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { submitPost } from './api';
+import { submitPost, upvotePost } from './api';
 import * as actions from './actionTypes';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.POST, postSaga);
   yield takeLatest(actions.POST_SUCCESS, postSuccessSaga);
+  yield takeLatest(actions.POST_UPVOTE, upvoteSaga);
 }
 
 function* postSaga() {
+  const formData = yield select(state => state.form.post.values);
+  const debateId = yield select(state => state.debate.debateId);
   try {
-    const formData = yield select(state => state.form.post.values);
-    const debateId = yield select(state => state.debate.debateId);
     const { username, userId } = yield select(state => state.user);
     const { position, post } = formData;
-
     const payload = {
       username,
       userId,
@@ -22,8 +22,6 @@ function* postSaga() {
       post,
       debateId
     };
-    console.log(payload);
-    
     const response = yield call(submitPost, payload);
     yield put({ type: actions.POST_SUCCESS, response, payload });
   }
@@ -34,12 +32,21 @@ function* postSaga() {
 
 function* postSuccessSaga({ payload }) {
   yield put(push('/'));
-  // just give the payload a temporary _id
-  payload._id = String(Date.now());
+  payload._id = String(Date.now()); // give the payload a temporary _id
   payload.votes = 0;
   console.log(payload);
 
-  yield put({ type: 'ADD_POST', post: payload });
+  yield put({ type: actions.POST_ADD, post: payload });
+}
+
+function* upvoteSaga(action) {
+  try {
+    console.log(action);
+    yield call(upvotePost, action.post);
+    yield put({ type: actions.POST_UPVOTE_SUCCESS, response });
+  } catch (e) {
+    yield put({ type: actions.POST_UPVOTE_FAIL })
+  }
 }
 
 export default rootSaga;

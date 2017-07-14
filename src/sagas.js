@@ -9,7 +9,11 @@ const rootSaga = function* rootSaga() {
 function* initSaga() {
   try {
     const response = yield call(init);
-    yield put({ type: actions.INIT_SUCCESS, response });
+    if (response.data.success) {
+      yield put({ type: actions.INIT_SUCCESS, response });
+    } else {
+      throw response;
+    }
   } catch (error) {
     yield put({ type: actions.INIT_FAIL, error });
   }

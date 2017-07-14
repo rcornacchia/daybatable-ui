@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
-import postReducer from './post';
-import debateReducer from './debate';
-import userReducer from './user';
+import postReducer from './postReducer';
+import debateReducer from './debateReducer';
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
     posts: postReducer,

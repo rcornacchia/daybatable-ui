@@ -7,11 +7,10 @@ class Post extends Component {
     this.incrementVote = this.incrementVote.bind(this);
   }
 
-incrementVote() {
-  const { upvote } = this.props;
-  console.log(upvote);
-  upvote(); 
-}
+  incrementVote() {
+    const { upvote, post } = this.props;
+    upvote(post); 
+  }
 
   render() {
     const { position, post, upvote } = this.props;
