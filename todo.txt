@@ -1,14 +1,15 @@
-HOW TO RECORD UPVOTES:
+= HOW TO RECORD UPVOTES:
   + send upvote to server with userId and post
   + add upvote id to user's upvotedPosts field
   + increment post's votes by 1
 
-FORM VALIDATION: make sure all fields are filled out
-
-TOKEN VALIDATION: Check for valid token, if invalid => relogin
-HTTPS
-Server side rendering
-Maybe use immutable js?
+= SORT POSTS BY VOTES
+= FORM VALIDATION: make sure all fields are filled out
+= TOKEN VALIDATION: Check for valid token, if invalid => relogin
+= Before a user upvotes, make sure they're logged in. If not => ask them to log in
+= HTTPS
+= Server side rendering
+= Maybe use immutable js?
 
 
 Architectural concerns:

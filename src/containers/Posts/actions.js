@@ -1,6 +1,6 @@
-import * as actions from '../Post/actionTypes';
+import * as actions from '../PostForm/actionTypes';
 
-export const upvote = post => ({
+export const upvote = payload => ({
   type: actions.POST_UPVOTE,
-  post
+  payload
 })

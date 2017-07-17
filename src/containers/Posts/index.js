@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Post from '../../components/Post';
+import Post from './Post';
 import { upvote } from './actions';
 import './Posts.scss';
 
 class Posts extends Component {
   render() {
-    const { position, posts, upvote } = this.props;
+    const { position, posts, upvote, userId } = this.props;
     
     return (
       <div className='Posts'>
@@ -15,10 +15,13 @@ class Posts extends Component {
         </div>
         {
           !!posts && Object.keys(posts).map((post, i) => {
-            return <Post key={`${position}-${i}`} 
-              post={posts[post]} 
-              position={position}
-              upvote={upvote} />
+            return (
+              <Post key={`${position}-${i}`} 
+                post={posts[post]} 
+                position={position}
+                upvote={upvote}
+                userId={userId}/>
+            );
           })
         }
       </div>
@@ -28,7 +31,8 @@ class Posts extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    posts: state.posts[props.position]
+    posts: state.posts[props.position],
+    userId: state.user.userId
   }
 }
 

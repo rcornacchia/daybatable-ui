@@ -6,7 +6,7 @@ import rootReducer from './reducers';
 import App from './App';
 import Login from './containers/Login';
 import Register from './containers/Register';
-import Post from './containers/Post';
+import PostForm from './containers/PostForm';
 import PostsLayout from './layouts/PostsLayout';
 import DevTools from './containers/DevTools';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
@@ -22,7 +22,7 @@ render(
           <IndexRoute component={PostsLayout} />
           <Route path="login" component={Login} />
           <Route path="register" component={Register} />
-          <Route path="post" component={Post} />
+          <Route path="post" component={PostForm} />
         </Route>
       </Router>
       <DevTools />

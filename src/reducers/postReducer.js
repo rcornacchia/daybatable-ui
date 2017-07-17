@@ -1,5 +1,5 @@
+import * as actions from '../containers/PostForm/actionTypes';
 import { cloneDeep } from 'lodash';
-import * as actions from '../containers/Post/actionTypes';
 
 const initialState = {
   for: null,
@@ -33,8 +33,14 @@ const postReducer = (state = initialState, action) => {
     }
     case actions.POST_UPVOTE: {
       const allPosts = cloneDeep(state);
-      const { _id, position } = action.post;
-      if (_id && position) allPosts[position][_id].votes += 1;
+      const { userId, post } = action.payload;
+      const { _id, position } = post;
+
+      console.log(`${userId}, ${_id}, ${position}`);
+
+      if (_id && position && userId && !allPosts[position][_id].votes.find(id => userId === userId)) {
+        allPosts[position][_id].votes.push(userId);
+      }
       
       return {
         ...state,
