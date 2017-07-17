@@ -36,10 +36,10 @@ const postReducer = (state = initialState, action) => {
       const { userId, post } = action.payload;
       const { _id, position } = post;
 
-      console.log(`${userId}, ${_id}, ${position}`);
-
-      if (_id && position && userId && !allPosts[position][_id].votes.find(id => userId === userId)) {
-        allPosts[position][_id].votes.push(userId);
+      if (_id && position && userId) {
+        if(!allPosts[position][_id].votes.find(id => id === userId)) {
+          allPosts[position][_id].votes.push(userId);
+        }
       }
       
       return {

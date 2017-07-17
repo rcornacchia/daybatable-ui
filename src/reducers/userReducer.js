@@ -13,7 +13,7 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.LOGIN_SUCCESS:
       const { username, _id } = action.response.data.user;
-
+      console.log(_id);
       return {
         loggedIn: true,
         username,
@@ -22,7 +22,8 @@ const userReducer = (state = initialState, action) => {
     case actions.LOGOUT:
       return {
         loggedIn: false,
-        username: null
+        username: null,
+        userId: null
       }
     default:
       return state;
