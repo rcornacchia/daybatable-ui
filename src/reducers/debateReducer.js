@@ -16,6 +16,11 @@ const debateReducer = (state = initialState, action) => {
         votesFor,
         votesAgainst
       };
+    case 'DEBATE_UPVOTE':
+      console.log(action);
+      const { debateId } = action;
+      
+      return state;
     default:
       return state;
   }

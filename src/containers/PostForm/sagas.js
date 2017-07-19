@@ -22,6 +22,7 @@ function* postSaga() {
       post,
       debateId
     };
+    console.log(userId);
     const response = yield call(submitPost, payload);
     yield put({ type: actions.POST_SUCCESS, response, payload });
   }
@@ -31,7 +32,9 @@ function* postSaga() {
 }
 
 function* postSuccessSaga({ payload }) {
-  yield userId = yield select(state => state.user.userId);
+  console.log(payload);
+  const { userId } = payload;
+  console.log(userId);
   payload._id = String(Date.now()); // give the payload a temporary _id
   payload.votes = [userId];
 

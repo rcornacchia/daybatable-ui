@@ -5,3 +5,5 @@ export const POST_ADD            = 'POST_ADD';
 export const POST_UPVOTE         = 'POST_UPVOTE';
 export const POST_UPVOTE_SUCCESS = 'POST_UPVOTE_SUCCESS';
 export const POST_UPVOTE_FAIL    = 'POST_UPVOTE_FAIL';
+
+export const DEBATE_UPVOTE       = 'DEBATE_UPVOTE';
