@@ -1,8 +1,3 @@
-FINISH DEBATE upvotes
-  + add to reducer
-  + send api request
-
-= SORT POSTS BY VOTES
 = FORM VALIDATION: make sure all fields are filled out
 = TOKEN VALIDATION: Check for valid token, if invalid => relogin
 = CHECK AUTH BEFORE API CALL: Before a user upvotes, make sure they're logged in. If not => ask them to log in

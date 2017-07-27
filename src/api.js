@@ -17,3 +17,8 @@ export const init = () => {
   const url = `${config.server}/api/init`;
   return get(url);
 }
+
+export const upvoteDebate = payload => {
+  const url = `${config.server}/api/debate/upvote`;
+  return post(url, payload);
+}

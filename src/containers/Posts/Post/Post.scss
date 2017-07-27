@@ -40,3 +40,15 @@
     padding: 0 3pt;
     border: 1px solid #000;
 }
+
+.position {
+    display: inline-block;
+}
+
+.position-votes-for {
+    float: right;
+}
+
+.position-votes-against {
+    float: left;
+}

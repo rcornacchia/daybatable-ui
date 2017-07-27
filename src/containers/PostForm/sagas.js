@@ -1,12 +1,13 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { submitPost, upvotePost } from './api';
+import { submitPost, upvotePost, unvotePost } from './api';
 import * as actions from './actionTypes';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.POST, postSaga);
   yield takeLatest(actions.POST_SUCCESS, postSuccessSaga);
   yield takeLatest(actions.POST_UPVOTE, upvoteSaga);
+  yield takeLatest(actions.POST_UNVOTE, postUnvoteSaga);
 }
 
 function* postSaga() {
@@ -27,14 +28,12 @@ function* postSaga() {
     yield put({ type: actions.POST_SUCCESS, response, payload });
   }
   catch (e) {
-    yield put({ type: actions.POST_FAIL });
+    yield put({ type: actions.POST_FAIL, e });
   }
 }
 
 function* postSuccessSaga({ payload }) {
-  console.log(payload);
   const { userId } = payload;
-  console.log(userId);
   payload._id = String(Date.now()); // give the payload a temporary _id
   payload.votes = [userId];
 
@@ -47,7 +46,16 @@ function* upvoteSaga(action) {
     const response = yield call(upvotePost, action.payload);
     yield put({ type: actions.POST_UPVOTE_SUCCESS, response });
   } catch (e) {
-    yield put({ type: actions.POST_UPVOTE_FAIL })
+    yield put({ type: actions.POST_UPVOTE_FAIL, e })
+  }
+}
+
+function* postUnvoteSaga({ payload }) {
+  try {
+    const response = yield call(unvotePost, action.payload);
+    yield put({ type: actions.POST_UNVOTE_SUCCESS, response });
+  } catch (e) {
+    yield put({ type: actions.POST_UNVOTE_FAIL, e });
   }
 }
 

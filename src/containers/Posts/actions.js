@@ -5,8 +5,14 @@ export const upvotePost = payload => ({
   payload
 });
 
-export const upvoteDebate = (debateId, position) => ({
+export const unvotePost = payload => ({
+  type: actions.POST_UNVOTE,
+  payload
+})
+
+export const upvoteDebate = (debateId, position, userId) => ({
   type: actions.DEBATE_UPVOTE,
   debateId,
-  position
+  position,
+  userId
 });

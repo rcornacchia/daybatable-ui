@@ -7,12 +7,16 @@ class Post extends Component {
     upvote({ post, userId }); 
   }
 
+  unvote = () => {
+    const { unvote, post, userId } = this.props;
+    unvote({ post, userId});
+  }
+
   render() {
     const { position, post, upvote, userId } = this.props;
-    
     let upvoteBtn;
     (!post.votes.find(id => id === userId)) ? upvoteBtn = <a className='vote-btn' onClick={this.vote}>+</a>
-                                            : upvoteBtn = <a className='vote-btn'></a>;
+                                            : upvoteBtn = <a className='vote-btn' onClick={this.unvote}>-</a>;
 
     return (
       <div className={`post ${position}`}>

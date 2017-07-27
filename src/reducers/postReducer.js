@@ -37,7 +37,7 @@ const postReducer = (state = initialState, action) => {
       const { _id, position } = post;
 
       if (_id && position && userId) {
-        if(!allPosts[position][_id].votes.find(id => id === userId)) {
+        if (!allPosts[position][_id].votes.find(id => id === userId)) {
           allPosts[position][_id].votes.push(userId);
         }
       }
@@ -46,6 +46,24 @@ const postReducer = (state = initialState, action) => {
         ...state,
         ...allPosts
       };
+    }
+    case actions.POST_UNVOTE: {
+      const allPosts = cloneDeep(state);
+      const { userId, post } = action.payload;
+      const { _id, position } = post;
+
+      if (_id && position && userId) {
+        const votes = allPosts[position][_id].votes;
+        const index = votes.find(id => id === userId);
+        if (index >= 0) {
+          votes.splice(index, 1);
+          console.log(votes);
+        }
+      }
+      return {
+        ...state,
+        ...allPosts
+      }
     }
     default:
       return state;

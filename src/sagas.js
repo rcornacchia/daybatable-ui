@@ -1,9 +1,10 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import * as actions from './actionTypes';
-import { init } from './api';
+import { init, upvoteDebate } from './api';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.INIT, initSaga);
+  yield takeLatest('DEBATE_UPVOTE', debateUpvoteSaga);
 }
 
 function* initSaga() {
@@ -16,6 +17,16 @@ function* initSaga() {
     }
   } catch (error) {
     yield put({ type: actions.INIT_FAIL, error });
+  }
+}
+
+function* debateUpvoteSaga({ userId, debateId, position }) {
+  const payload = { userId, debateId, position };
+  try {
+    const response = yield call(upvoteDebate, payload);
+    yield put({ type: 'DEBATE_UPVOTE_SUCCESS', response });
+  } catch (error) {
+    yield put({ type: 'DEBATE_UPVOTE_FAIL', error });
   }
 }
 
