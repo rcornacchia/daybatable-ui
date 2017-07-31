@@ -18,7 +18,7 @@ class Post extends Component {
             <label><Field name='position' component='input' type='radio' value='for'/> For</label>
             <label><Field name='position' component='input' type='radio' value='against'/> Against</label>
           </div>
-          <label>Argument<Field name='post' component='textarea' /></label>
+          <label>Argument<Field name='postText' component='textarea' /></label>
           <button type='submit'>Submit</button>
         </form>
       </div>

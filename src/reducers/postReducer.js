@@ -1,10 +1,13 @@
-import * as actions from '../containers/PostForm/actionTypes';
+import * as postFormactions from '../containers/PostForm/actionTypes';
+import * as postActions from '../containers/Posts/actionTypes';
 import { cloneDeep } from 'lodash';
 
 const initialState = {
   for: null,
   against: null
 }
+
+const actions = { ...postFormactions, ...postActions };
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -54,11 +57,8 @@ const postReducer = (state = initialState, action) => {
 
       if (_id && position && userId) {
         const votes = allPosts[position][_id].votes;
-        const index = votes.find(id => id === userId);
-        if (index >= 0) {
-          votes.splice(index, 1);
-          console.log(votes);
-        }
+        const index = votes.indexOf(userId);
+        if (index >= 0) votes.splice(index, 1);
       }
       return {
         ...state,

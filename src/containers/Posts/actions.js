@@ -1,4 +1,4 @@
-import * as actions from '../PostForm/actionTypes';
+import * as actions from './actionTypes';
 
 export const upvotePost = payload => ({
   type: actions.POST_UPVOTE,
@@ -11,7 +11,7 @@ export const unvotePost = payload => ({
 })
 
 export const upvoteDebate = (debateId, position, userId) => ({
-  type: actions.DEBATE_UPVOTE,
+  type: 'DEBATE_UPVOTE',
   debateId,
   position,
   userId

@@ -22,7 +22,7 @@ class Post extends Component {
       <div className={`post ${position}`}>
         { upvoteBtn }
         <p className="post-body votes">{post.votes.length}</p>
-        <p className="post-body">{post.post}</p>
+        <p className="post-body">{post.postText}</p>
       </div>
     )
   }
