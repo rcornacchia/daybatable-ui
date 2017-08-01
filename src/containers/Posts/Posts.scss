@@ -2,13 +2,44 @@
   width: 49.4vw;
   display: inline-block;
   vertical-align: top;
+
+  .vote-btn {
+    display: inline-block;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .for-btn:hover {
+    border: 1px solid #00A8E8;
+    background-color: #00A8E8;
+  }
+
+  .against-btn:hover {
+    border: 1px solid #F22B4A;
+    background-color: #F22B4A;
+  }
+ 
+  .position-border {
+    padding: 5px;
+  }
+
+  .position-border-for {
+    border-bottom: 3px solid #00A8E8;
+  }
+
+  .position-border-against {
+    border-bottom: 3px solid #F22B4A;
+  }
+
+  .position-btn {
+    min-width: 50px;
+    margin-right: 7px;
+  }
 }
 
-.position {
+.position-title {
   text-align: center;
-}
-
-.vote-btn {
-  border: 1px solid #000000;
-  border-radius: 2px;
+  font-weight: 900;
 }

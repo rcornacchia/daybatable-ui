@@ -17,11 +17,11 @@ class Posts extends Component {
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
     
-    let voteBtn = <a className='vote-btn' onClick={this.upvote}>+</a>;
+    let voteBtn = <span>+</span>;
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
-        voteBtn = <a className='vote-btn' onClick={this.upvote}>-</a>;
+      voteBtn = <span>-</span>;
     } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
-      voteBtn = <a className='vote-btn' onClick={this.upvote}>-</a>;
+      voteBtn = <span>-</span>;
     }
 
     let votes = 0;
@@ -30,9 +30,12 @@ class Posts extends Component {
 
     return (
       <div className='Posts'>
-        <div>
-          <div className='position'>{position}</div>
-          <div className={`position-votes-${position}`}>{votes} {voteBtn}</div>
+        <div className='position-title'>
+          <span className={`position-border position-border-${position}`}>
+            <a className={`vote-btn ${position}-btn position-btn`}
+              onClick={this.upvote}>{votes} {voteBtn}</a>
+            <div className='position'>{position.toUpperCase()}</div>
+          </span>
         </div>
         {
           !!posts && sortedPosts.map((post, i) => {
