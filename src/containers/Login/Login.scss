@@ -1,7 +1,4 @@
 .login-container {
-  .login-form {
-    label {
-      display: block;
-    }
-  }
+  display: flex;
+  justify-content: center;
 }

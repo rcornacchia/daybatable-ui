@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TextField } from 'redux-form-material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { login } from './actions';
 import { Field, reduxForm } from 'redux-form';
@@ -14,20 +16,18 @@ class Login extends Component {
   render() {
     return (
       <div className='login-container'>
-        <form className='login-form' onSubmit={this.submit} >
-          <div>
-            <label>username</label>
-            <Field name='username'
-              component='input'
-              type='text' />
-          </div>
-          <div>
-            <label>password</label>
-            <Field name='password'
-              component='input'
-              type='password' />
-          </div>
-          <button type='submit'>Login</button>
+        <form onSubmit={this.submit} >
+          <Field name='username'
+            component={TextField}
+            floatingLabelText='username'
+            type='text' />
+          <br />
+          <Field name='password'
+            component={TextField}
+            floatingLabelText='password'
+            type='password' />
+          <br />
+          <RaisedButton label='Login' type='submit' />
         </form>
       </div>
     )

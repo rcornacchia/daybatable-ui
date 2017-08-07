@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
 import { register } from './actions';
 import './Register.scss';
 
@@ -12,25 +14,30 @@ class Register extends Component {
 
   render() {
     return (
-      <div className='register-form'>
+      <div className='register-container'>
         <form className='register-form' onSubmit={this.submit}>
-          <label>email</label>
           <Field name='email'
-            component='input' />
-          <label>username</label>
+            component={TextField}
+            floatingLabelText='Email' />
+          <br />
           <Field name='username'
-            component='input' />
-          <label>password</label>
+            component={TextField}
+            floatingLabelText='Username' />
+          <br />
           <Field name='password'
-            component='input'
+            component={TextField}
+            floatingLabelText='Password'
             type='password' />
-          <label>First Name</label>
+          <br />
           <Field name='firstName'
-            component='input' />
-          <label>Last Name</label>
+            component={TextField}
+            floatingLabelText='First Name' />
+          <br />
           <Field name='lastName'
-            component='input' />
-          <button type='submit'>Register</button>
+            component={TextField}
+            floatingLabelText='Last Name' />
+          <br />
+          <RaisedButton label='Register' type='submit' />
         </form>
       </div>
     );

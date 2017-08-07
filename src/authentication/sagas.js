@@ -9,6 +9,7 @@ const rootSaga = function* rootSaga() {
 function* logoutSaga() {
   localStorage.removeItem('token');
   localStorage.removeItem('username');
+  localStorage.removeItem('userId');
   yield put(push('/'));
 }
 

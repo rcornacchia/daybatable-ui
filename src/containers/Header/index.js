@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import RaisedButton from 'material-ui/RaisedButton';
 import './Header.scss';
 
 class Header extends Component {
@@ -11,9 +12,12 @@ class Header extends Component {
 
     let navRight = (
       <div>
-        <Link to='/post' className='link right-link'>Post Argument</Link>
-        <a className='link right-link'
-          onClick={logout}>Logout</a>
+        <Link to='/post' className='link right-link'>
+          <RaisedButton label="Post Argument" />
+        </Link>
+        <a className='link right-link' onClick={logout}>
+          <RaisedButton label="Logout" />
+        </a>
         <span className='link right-link'>{username}</span>
       </div>
     );
@@ -21,8 +25,12 @@ class Header extends Component {
     if (!user.loggedIn) {
       navRight = (
         <div>
-          <Link to='/login' className='link right-link'>Login</Link>
-          <Link to='/register' className='link right-link'>Register</Link>
+          <Link to='/login' className='link right-link'>
+            <RaisedButton label="Login" />
+          </Link>
+          <Link to='/register' className='link right-link'>
+            <RaisedButton label="Register" />
+          </Link>
         </div>
       );
     }

@@ -13,27 +13,30 @@ class Posts extends Component {
   render() {
     const { position, posts, upvotePost, unvotePost, userId, debate } = this.props;
     if (!posts) return false;
+    
+    let votes = 0;
+    (position === 'for') ? votes = debate.votesFor && debate.votesFor.length
+                         : votes = debate.votesAgainst && debate.votesAgainst.length;
 
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
     
-    let voteBtn = <span>+</span>;
+    let voteBtn = (<a className={`vote-btn ${position}-btn position-btn`}
+                    onClick={this.upvote}>{votes} +</a>);
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
-      voteBtn = <span>-</span>;
+      voteBtn = (<a className={`vote-btn ${position}-btn position-btn voted-${position}`}
+                  onClick={this.upvote}>{votes} -</a>);
     } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
-      voteBtn = <span>-</span>;
+      voteBtn = (<a className={`vote-btn ${position}-btn position-btn voted-${position}`}
+                  onClick={this.upvote}>{votes} -</a>);
     }
 
-    let votes = 0;
-    (position === 'for') ? votes = debate.votesFor && debate.votesFor.length
-                         : votes = debate.votesAgainst && debate.votesAgainst.length;
 
     return (
       <div className='Posts'>
         <div className='position-title'>
           <span className={`position-border position-border-${position}`}>
-            <a className={`vote-btn ${position}-btn position-btn`}
-              onClick={this.upvote}>{votes} {voteBtn}</a>
+            { voteBtn }
             <div className='position'>{position.toUpperCase()}</div>
           </span>
         </div>

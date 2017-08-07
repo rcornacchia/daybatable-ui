@@ -37,6 +37,18 @@
     min-width: 50px;
     margin-right: 7px;
   }
+  
+  .voted-for {
+    background-color: #00A8E8;
+    border: 1px solid #00A8E8;
+    color: #ffffff;
+  }
+
+  .voted-against {
+    background-color: #F22B4A;
+    border: 1px solid #F22B4A;
+    color: #ffffff;    
+  }
 }
 
 .position-title {

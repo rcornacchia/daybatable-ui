@@ -21,7 +21,7 @@ class Post extends Component {
               { post.votes.length } +
             </a>);
     } else {
-      btn = (<a className={`post-body votes vote-btn post-vote-btn ${position}-btn`}
+      btn = (<a className={`post-body votes vote-btn post-vote-btn ${position}-btn voted-${position}`}
                 onClick={this.unvote}>
               { post.votes.length } -
             </a>);
@@ -30,7 +30,7 @@ class Post extends Component {
     return (
       <div className={`post ${position}`}>
         {btn}
-        <p className='post-body'>{post.postText}</p>
+        <div className='post-body'>{post.postText}</div>
       </div>
     )
   }

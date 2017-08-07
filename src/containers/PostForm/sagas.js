@@ -11,6 +11,7 @@ const rootSaga = function* rootSaga() {
 function* postSaga() {
   const formData = yield select(state => state.form.post.values);
   const debateId = yield select(state => state.debate.debateId);
+  console.log(debateId);
   try {
     const { username, userId } = yield select(state => state.user);
     const { position, postText } = formData;
