@@ -6,9 +6,8 @@ import './Header.scss';
 
 class Header extends Component {
   render() {
-    const { logout, user, debate } = this.props;
+    const { logout, user } = this.props;
     const { username } = user;
-    const { topic } = debate;
 
     let navRight = (
       <div>
@@ -38,10 +37,9 @@ class Header extends Component {
     return (
       <div className='header-container'>
         <div className='navbar'>
-          <Link to='/' className='link'>Daybatable</Link>
-          <div className='debate-topic'>
-            {topic}
-          </div>
+          <Link to='/' className='link'>
+            <RaisedButton label="Daybatable" />
+          </Link>
           <div className='navbar-right'>
             {navRight}
           </div>
@@ -51,12 +49,9 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user,
-    debate: state.debate
-  }
-}
+const mapStateToProps = state => ({
+  user: state.user,
+})
 
 const mapDispatchToProps = dispatch => {
   return {

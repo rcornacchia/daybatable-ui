@@ -3,7 +3,6 @@ a {
 }
 
 .header-container {
-  height: 50px;
   padding: 20px;
 }
 
@@ -12,14 +11,6 @@ a {
   top: 10px;
   transform: translateY(-50%);
   font-size: 20px;
-
-  .debate-topic {
-    top: 0;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-  }
 }
 
 .link {

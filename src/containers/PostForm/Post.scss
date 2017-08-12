@@ -1,10 +1,8 @@
 .post-container {
-  .post-form {
-    label {
-      display: block;
-    }
-    textarea {
-      display: block;
-    }
+  display: flex;
+  justify-content: center;
+
+  .post-textfield {
+    width: 1000pt;
   }
 }

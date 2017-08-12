@@ -1,5 +1,6 @@
 import React from 'react';
 import Posts from '../containers/Posts';
+import './PostsLayout.scss';
 
 const PostsLayout = () => (
   <div className='arguments-layout'>

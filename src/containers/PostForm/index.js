@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
 import { post } from './actions';
 import './Post.scss';
 
@@ -18,8 +20,14 @@ class Post extends Component {
             <label><Field name='position' component='input' type='radio' value='for'/> For</label>
             <label><Field name='position' component='input' type='radio' value='against'/> Against</label>
           </div>
-          <label>Argument<Field name='postText' component='textarea' /></label>
-          <button type='submit'>Submit</button>
+          <Field name ='postText'
+            className='post-textfield'
+            component={TextField}
+            floatingLabelText='Argument'
+            multiLine
+            rows={3} />
+          <br />
+          <RaisedButton label='submit' type='submit' />
         </form>
       </div>
     )
