@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import './Topic.scss'
 
@@ -7,7 +7,7 @@ const Topic = ({ topic }) => {
     <div className='topic-container'>
       <div className='topic'>{topic}</div>
     </div>
-  );
+  )
 }
 
 const mapStateToProps = state => ({

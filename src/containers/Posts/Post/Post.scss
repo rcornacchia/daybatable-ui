@@ -17,8 +17,13 @@
 //   transform: translateY(-2px);
 }
 
-.post-body {
+.post-username {
   display: inline;
+}
+
+.post-body {
+  display: inline-flex;
+  margin-top: 5px;
 }
 
 .post-vote-btn {

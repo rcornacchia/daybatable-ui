@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import UserDropDown from './UserDropDown';
 import './Header.scss';
 
 class Header extends Component {
@@ -14,10 +15,7 @@ class Header extends Component {
         <Link to='/post' className='link right-link'>
           <RaisedButton label="Post Argument" />
         </Link>
-        <a className='link right-link' onClick={logout}>
-          <RaisedButton label="Logout" />
-        </a>
-        <span className='link right-link'>{username}</span>
+        <UserDropDown username={username} logout={logout}/>
       </div>
     );
 

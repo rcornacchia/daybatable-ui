@@ -16,12 +16,12 @@ class Post extends Component {
     const { position, post, upvote, userId } = this.props;
     let btn;
     if (!post.votes.find(id => id === userId)) {
-      btn = (<a className={`post-body votes vote-btn post-vote-btn ${position}-btn`} 
+      btn = (<a className={`votes vote-btn post-vote-btn ${position}-btn`} 
                 onClick={this.vote}>
               { post.votes.length } +
             </a>);
     } else {
-      btn = (<a className={`post-body votes vote-btn post-vote-btn ${position}-btn voted-${position}`}
+      btn = (<a className={`votes vote-btn post-vote-btn ${position}-btn voted-${position}`}
                 onClick={this.unvote}>
               { post.votes.length } -
             </a>);
