@@ -9,6 +9,17 @@
     border-radius: 2px;
     cursor: pointer;
     text-decoration: none;
+    vertical-align: middle;
+
+    .plus-button {
+      margin-left: 5px;
+      float: left;
+    }
+
+    .number-votes {
+      margin-right: 5px;
+      float: right;
+    }
   }
 
   .for-btn:hover {
@@ -54,4 +65,19 @@
 .position-title {
   text-align: center;
   font-weight: 900;
+
+  .warning {
+    position: fixed;
+    color: red;
+    font-size: 12px;
+    font-weight: 100;
+  }
+
+  .warning-for {
+    left: 10px;    
+  }
+
+  .warning-against {
+    right: 10px;    
+  }
 }

@@ -55,3 +55,17 @@
   border: 1px solid #F22B4A;
   background-color: #F22B4A;
 }
+
+.post-vote-btn {
+  display: inline-block;
+  
+  .plus-button {
+    margin-left: 5px;
+    float: left;
+  }
+
+  .number-votes {
+    margin-right: 5px;
+    float: right;
+  }
+}

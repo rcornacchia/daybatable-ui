@@ -4,19 +4,23 @@ const initialState = {
   debateId: null,
   topic: null,
   votesFor: [],
-  votesAgainst: []
+  votesAgainst: [],
+  forPosition: null,
+  againstPosition: null
 }
 
 const debateReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INIT_SUCCESS': {
-      const { _id, topic, votesFor, votesAgainst } = action.response.data.debate;
+      const { _id, topic, votesFor, votesAgainst, forPosition, againstPosition } = action.response.data.debate;
       return {
         ...state,
         debateId: _id,
         topic,
         votesFor,
-        votesAgainst
+        votesAgainst,
+        forPosition,
+        againstPosition
       };
     }
     case 'DEBATE_UPVOTE':

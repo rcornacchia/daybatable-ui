@@ -1,8 +1,23 @@
-To do:
-= FORM VALIDATION: make sure all fields are filled out
+Todo:
+
+MVP:
+= Add timer til next debate
+= fix position title
+= Add username (and maybe date) to Post
+= Create landing page
+= deploy on AWS
+= add production config
+
+1.0:
+= UPCOMING DEBATES
+= POST NEW DEBATE TOPIC
+  + Plus form validation
+= Think about user sign on flow
+  + if a user registers, should they be automatically logged in?
 = TOKEN VALIDATION: Check for valid token, if invalid => relogin
 = CHECK AUTH BEFORE API CALL: Before a user upvotes, make sure they're logged in. If not => ask them to log in
 = HTTPS
+= robots.txt
 
 Nice to have:
 = Server side rendering

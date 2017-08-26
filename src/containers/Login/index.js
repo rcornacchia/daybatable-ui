@@ -8,12 +8,22 @@ import { Field, reduxForm } from 'redux-form';
 import './Login.scss';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { warning: '' };
+  }
+
   submit = e => {
     e.preventDefault();
-    this.props.login();
+    if (this.props.valid) {
+      this.props.login();
+    } else {
+      this.setState({ warning: 'Incorrect combination.' })
+    }
   }
 
   render() {
+    const { warning } = this.state;
     return (
       <div className='login-container'>
         <form onSubmit={this.submit} >
@@ -28,17 +38,30 @@ class Login extends Component {
             type='password' />
           <br />
           <RaisedButton label='Login' type='submit' />
+          <span className='warning'>{warning}</span>          
         </form>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: () => dispatch(login())
-  }
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(login())
+})
+
+const validate = values => {
+  const errors = {};
+  const requiredFields = [ 'username', 'password' ];
+  requiredFields.forEach(field => {
+    if (!values[ field ]) {
+      errors[ field ] = 'Required';
+    }
+  })
+  return errors;
 }
 
-Login = reduxForm({ form: 'login' })(Login);
+Login = reduxForm({
+  form: 'login',
+  validate
+})(Login);
 export default connect(null, mapDispatchToProps)(Login);

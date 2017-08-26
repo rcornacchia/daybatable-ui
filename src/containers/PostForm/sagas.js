@@ -11,10 +11,10 @@ const rootSaga = function* rootSaga() {
 function* postSaga() {
   const formData = yield select(state => state.form.post.values);
   const debateId = yield select(state => state.debate.debateId);
+  const { username, userId } = yield select(state => state.user);
+  const { position, postText } = formData;
   
   try {
-    const { username, userId } = yield select(state => state.user);
-    const { position, postText } = formData;
     const payload = {
       username,
       userId,
@@ -23,11 +23,7 @@ function* postSaga() {
       debateId
     };
     const response = yield call(submitPost, payload);
-    if (response && response.success) {
-      yield put({ type: actions.POST_SUCCESS, response, payload });
-    } else{
-      yield put({ type: actions.POST_FAIL });
-    }
+    yield put({ type: actions.POST_SUCCESS, response, payload });
   }
   catch (e) {
     yield put({ type: actions.POST_FAIL, e });

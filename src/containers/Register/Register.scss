@@ -1,4 +1,9 @@
 .register-container {
   display: flex;
   justify-content: center;
+
+  .warning {
+    color: red;
+    margin-left: 10px;
+  }
 }

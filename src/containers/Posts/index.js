@@ -5,15 +5,29 @@ import { upvotePost, unvotePost, upvoteDebate } from './actions';
 import './Posts.scss';
 
 class Posts extends Component {
-  upvote = () => {
-    const { upvoteDebate, debate, position, userId } = this.props;
-    upvoteDebate(debate.debateId, position, userId);
+  constructor(props) {
+    super(props);
+    this.state = { warning: '' }
   }
 
+  upvote = () => {
+    const { upvoteDebate, debate, position, userId } = this.props;
+    (userId) ? upvoteDebate(debate.debateId, position, userId)
+             : this.warn();
+  }
+
+  warn = () => this.setState({ warning: 'Please register or login' });
+
   render() {
+    const { warning } = this.state;
     const { position, posts, upvotePost, unvotePost, userId, debate } = this.props;
+    const { forPosition, againstPosition } = debate;
     if (!posts) return false;
-    
+
+    let positionTitle = '';
+    (position == 'for') ? positionTitle = forPosition
+                        : positionTitle = againstPosition;
+
     let votes = 0;
     (position === 'for') ? votes = debate.votesFor && debate.votesFor.length
                          : votes = debate.votesAgainst && debate.votesAgainst.length;
@@ -21,24 +35,34 @@ class Posts extends Component {
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
     
-    let voteBtn = (<a className={`vote-btn ${position}-btn position-btn`}
-                    onClick={this.upvote}>{votes} +</a>);
+    let voteBtn = (
+      <a className={`vote-btn ${position}-btn position-btn`} onClick={this.upvote}>
+        <span className='plus-button'>+</span>
+        <span className='number-votes'>{votes}</span>
+      </a>
+    );
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
-      voteBtn = (<a className={`vote-btn ${position}-btn position-btn voted-${position}`}
-                  onClick={this.upvote}>{votes} -</a>);
+      voteBtn = (
+        <a className={`vote-btn ${position}-btn position-btn voted-${position}`} onClick={this.upvote}>
+          <span className='number-votes'>{votes}</span>
+        </a>
+      );
     } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
-      voteBtn = (<a className={`vote-btn ${position}-btn position-btn voted-${position}`}
-                  onClick={this.upvote}>{votes} -</a>);
+      voteBtn = (
+        <a className={`vote-btn ${position}-btn position-btn voted-${position}`} onClick={this.upvote}>
+          <span className='number-votes'>{votes}</span>
+        </a>
+      );
     }
-
 
     return (
       <div className='Posts'>
         <div className='position-title'>
           <span className={`position-border position-border-${position}`}>
             { voteBtn }
-            <div className='position'>{position.toUpperCase()}</div>
+            <div className='position'>{positionTitle.toUpperCase()}</div>
           </span>
+          <span className={`warning warning-${position}`}>{warning}</span>
         </div>
         {
           !!posts && sortedPosts.map((post, i) => {
@@ -48,7 +72,8 @@ class Posts extends Component {
                 position={position}
                 upvote={upvotePost}
                 unvote={unvotePost}
-                userId={userId} />
+                userId={userId}
+                warn={this.warn} />
             );
           })
         }
@@ -69,7 +94,7 @@ const mapDispatchToProps = dispatch => {
   return {
     upvotePost: data => dispatch(upvotePost(data)),
     unvotePost: data => dispatch(unvotePost(data)),
-    upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId))
+    upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
   }
 }
 
