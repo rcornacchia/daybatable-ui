@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8080;
 
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 app.use(express.static(path.resolve(__dirname, 'public')));

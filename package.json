@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server -d --hot",
     "prod": "webpack -p",
-    "start": "npm run prod"
+    "start": "npm run prod",
+    "webpack": "webpack --progress --color --watch"
   },
   "author": "Rob Cornacchia",
   "license": "ISC",
