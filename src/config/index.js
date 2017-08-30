@@ -5,4 +5,4 @@ let config;
 (process.env.MODE === 'DEV') ? config = devConfig
                              : config = prodConfig;
 
-export default devConfig;
+export default config;
