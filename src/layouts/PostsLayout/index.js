@@ -1,6 +1,6 @@
 import React from 'react';
-import Posts from '../containers/Posts';
-import Topic from '../containers/Topic';
+import Posts from '../../containers/Posts';
+import Topic from '../../containers/Topic';
 import './PostsLayout.scss';
 
 const PostsLayout = () => (

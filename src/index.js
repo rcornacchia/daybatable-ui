@@ -10,6 +10,7 @@ import App from './App';
 import Login from './containers/Login';
 import Register from './containers/Register';
 import PostForm from './containers/PostForm';
+import About from './layouts/About';
 import PostsLayout from './layouts/PostsLayout';
 import DevTools from './containers/DevTools';
 
@@ -27,9 +28,10 @@ render(
         <Router history={browserHistory}>
           <Route path='/' component={App}>
             <IndexRoute component={PostsLayout} />
-            <Route path="login" component={Login} />
-            <Route path="register" component={Register} />
-            <Route path="post" component={PostForm} />
+            <Route path='about' component={About} />          
+            <Route path='login' component={Login} />
+            <Route path='register' component={Register} />
+            <Route path='post' component={PostForm} />
           </Route>
         </Router>
         <DevTools />

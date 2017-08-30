@@ -12,8 +12,11 @@ class Header extends Component {
 
     let navRight = (
       <div>
+        <Link to='/about' className='link right-link'>
+          <RaisedButton label='About' />
+        </Link>
         <Link to='/post' className='link right-link'>
-          <RaisedButton label="Post Argument" />
+          <RaisedButton label='Post Argument' />
         </Link>
         <UserDropDown username={username} logout={logout}/>
       </div>
@@ -22,11 +25,14 @@ class Header extends Component {
     if (!user.loggedIn) {
       navRight = (
         <div>
+          <Link to='/about' className='link right-link'>
+            <RaisedButton label='About' />
+          </Link>
           <Link to='/login' className='link right-link'>
-            <RaisedButton label="Login" />
+            <RaisedButton label='Login' />
           </Link>
           <Link to='/register' className='link right-link'>
-            <RaisedButton label="Register" />
+            <RaisedButton label='Register' />
           </Link>
         </div>
       );
@@ -36,7 +42,7 @@ class Header extends Component {
       <div className='header-container'>
         <div className='navbar'>
           <Link to='/' className='link'>
-            <RaisedButton label="Daybatable" />
+            <RaisedButton label='Daybatable' />
           </Link>
           <div className='navbar-right'>
             {navRight}

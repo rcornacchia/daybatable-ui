@@ -34,6 +34,9 @@
  
   .position-border {
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .position-border-for {
@@ -63,8 +66,10 @@
 }
 
 .position-title {
-  text-align: center;
   font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .warning {
     position: fixed;

@@ -1,15 +1,14 @@
-Todo:
-
 MVP:
-= Add timer til next debate
-= fix position title
+= fix post upvote button
 = Add username (and maybe date) to Post
 = Create landing page
-= deploy on AWS
-= add production config
+= set up domain name
 
 1.0:
+= Add timer til next debate
+= LOGIN FORM: let user know if combination is incorrect
 = UPCOMING DEBATES
+  + update about page
 = POST NEW DEBATE TOPIC
   + Plus form validation
 = Think about user sign on flow

@@ -58,10 +58,10 @@ class Posts extends Component {
     return (
       <div className='Posts'>
         <div className='position-title'>
-          <span className={`position-border position-border-${position}`}>
+          <div className={`position-border position-border-${position}`}>
             { voteBtn }
             <div className='position'>{positionTitle.toUpperCase()}</div>
-          </span>
+          </div>
           <span className={`warning warning-${position}`}>{warning}</span>
         </div>
         {
