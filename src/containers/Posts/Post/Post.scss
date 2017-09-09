@@ -17,22 +17,49 @@
 //   transform: translateY(-2px);
 }
 
-.post-username {
-  display: inline;
+.post-username-container {
+  display: inline-block;
+  width: 91%;  
 }
 
-.post-body {
-  display: inline-flex;
-  margin-top: 5px;
+.post-username {
+  font-weight: bold;  
+}
+
+.post-date {
+  font-weight: 100;
+}
+
+.post-container {
+  display: inline-block;
+  padding: 10px 10px 0 10px;
 }
 
 .post-vote-btn {
-  width: 35px;
+  display: inline-block;
   margin-right: 7px;
+  width: 100%;
+
+  .plus-button {
+    margin-left: 5px;
+    float: left;
+  }
+
+  .number-votes {
+    margin-right: 5px;
+    float: right;
+  }
 }
 
 .votes {
   margin-right: 5pt;
+}
+
+.vote-btn-container {
+  display: inline-block;
+  width: 7%;
+  vertical-align: top;
+  margin-right: 2%;
 }
 
 .for {
@@ -55,18 +82,4 @@
 .against-btn:hover {
   border: 1px solid #F22B4A;
   background-color: #F22B4A;
-}
-
-.post-vote-btn {
-  display: inline-block;
-  
-  .plus-button {
-    margin-left: 5px;
-    float: left;
-  }
-
-  .number-votes {
-    margin-right: 5px;
-    float: right;
-  }
 }

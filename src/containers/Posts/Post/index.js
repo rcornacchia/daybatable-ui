@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import './Post.scss';
 
 class Post extends Component {
@@ -14,6 +15,9 @@ class Post extends Component {
 
   render() {
     const { position, post, upvote, userId } = this.props;
+    const date = post && moment(post.datePosted).fromNow();
+    console.log(date);
+
     let btn;
     if (!post.votes.find(id => id === userId)) {
       btn = (
@@ -32,8 +36,18 @@ class Post extends Component {
 
     return (
       <div className={`post ${position}`}>
-        {btn}
-        <div className='post-body'>{post.postText}</div>
+        <div>
+          <div className='vote-btn-container'>
+            {btn}
+          </div>
+          <div className='post-username-container'>
+            <span className='post-username'>{post.username}</span>
+            <span className='post-date'> posted {date}</span>
+          </div>
+        </div>
+        <div className='post-container'>
+          <div>{post.postText}</div>
+        </div>
       </div>
     )
   }

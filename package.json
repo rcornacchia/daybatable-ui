@@ -8,7 +8,8 @@
     "dev": "webpack-dev-server -d --hot",
     "prod": "webpack -p",
     "start": "npm run prod",
-    "webpack": "webpack --progress --color --watch"
+    "webpack": "webpack --progress --color",
+    "watch": "webpack --progress --color --watch"
   },
   "author": "Rob Cornacchia",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "css-loader": "^0.28.4",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.7",
+    "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^1.3.1",
