@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
+import ReactGA from 'react-ga';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import configureStore from './store/configureStore';
@@ -19,14 +20,10 @@ import DevTools from './containers/DevTools';
 injectTapEventPlugin();
 
 // Google Analytics
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-106316218-1', 'auto');
-ga('send', 'pageview');
-
+ReactGA.initialize('UA-106316218-1'); 
+function fireTracking() {
+  ReactGA.pageview(window.location.hash);
+}
 
 const store = configureStore(rootReducer);
 store.dispatch({ type: 'INIT' });
@@ -35,7 +32,7 @@ render(
   <Provider store={store}>
     <MuiThemeProvider>
       <div>
-        <Router history={browserHistory}>
+        <Router history={browserHistory} onUpdate={fireTracking}>
           <Route path='/' component={App}>
             <IndexRoute component={PostsLayout} />
             <Route path='about' component={About} />          
