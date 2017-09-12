@@ -4,7 +4,7 @@
   "description": "Daybatable client",
   "main": "index.js",
   "scripts": {
-    "build:local": "MODE='DEV' webpack --progress --watch",
+    "build:local": "MODE='DEV' webpack --progress",
     "dev": "MODE='DEV' webpack-dev-server -d --hot",
     "prod": "webpack -p",
     "start": "npm run prod",
