@@ -33,7 +33,7 @@ function* postSaga() {
 function* postSuccessSaga({ response, payload }) {
   const { userId } = payload;
   payload._id = String(Date.now()); // give the payload a temporary _id
-  payload.votes = [userId];
+  payload.votes = [];
 
   yield put(push('/'));
   yield put({ type: actions.POST_ADD, post: payload });

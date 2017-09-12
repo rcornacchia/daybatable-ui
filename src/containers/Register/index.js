@@ -31,6 +31,7 @@ class Register extends Component {
 
   render() {
     const { warning } = this.state;
+    const { message } = this.props;
     return (
       <div className='register-container'>
         <form className='register-form' onSubmit={this.submit}>
@@ -47,6 +48,11 @@ class Register extends Component {
             component={TextField}
             floatingLabelText='Password'
             type='password' />
+          <Field name='repeatPassword'
+            style={style}          
+            component={TextField}
+            floatingLabelText='Re-enter password'
+            type='password' />
           <Field name='firstName'
             style={style}
             component={TextField}
@@ -56,8 +62,11 @@ class Register extends Component {
             component={TextField}
             floatingLabelText='Last Name' />
           <RaisedButton label='Register' type='submit' />
-          <span className='warning'>{warning}</span>          
+          <span className='warning'>{warning}</span>     
         </form>
+        <div className='login-error-message'>
+          <span className='warning'>{message}</span>
+        </div>
       </div>
     );
   }
@@ -78,7 +87,7 @@ const asyncValidate = values => {
 
 const validate = values => {
   const errors = {};
-  const requiredFields = [ 'email', 'password', 'firstName', 'lastName' ];
+  const requiredFields = [ 'email', 'password', 'repeatPassword', 'firstName', 'lastName' ];
   
   requiredFields.forEach(field => {
     if (!values[ field ]) {
@@ -93,8 +102,20 @@ const validate = values => {
   if (values.password && values.password.length < 5) {
     errors.password = 'Password must be at least 5 characters';
   }
+
+  if (values.repeatPassword && values.repeatPassword.length < 5) {
+    errors.repeatPassword = 'Password must be at least 5 characters';
+  }
+
+  if (values.password !== values.repeatPassword) {
+    errors.repeatPassword = `Passwords don't match`;
+  }
   return errors;
 }
+
+const mapStateToProps = state => ({
+  message: state.user.message
+})
 
 const mapDispatchToProps = dispatch => ({
   register: () => dispatch(register())
@@ -110,4 +131,4 @@ Register = reduxForm({
   asyncValidate,
   asyncBlurFields: [ 'username', 'email' ]
 })(Register);
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

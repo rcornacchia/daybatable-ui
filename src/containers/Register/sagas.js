@@ -10,8 +10,6 @@ const rootSaga = function* rootSaga() {
 
 function* registerSaga() {
   const payload = yield select(state => state.form.register.values);
-  console.log(payload);
-  console.log('test');
   try {
     const response = yield call(register, payload);
     yield put({ type: actions.REGISTER_SUCCESS, response });
@@ -21,7 +19,15 @@ function* registerSaga() {
 }
 
 function* registerSuccessSaga(action) {
-  yield put(push('/'));
+  const { data } = action.response;
+  console.log(data);
+
+  if (data) {
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('username', data.user.username);
+    localStorage.setItem('userId', data.user._id);
+    yield put(push('/'));
+  }
 }
 
 export default rootSaga;

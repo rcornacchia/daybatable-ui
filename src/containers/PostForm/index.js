@@ -29,7 +29,7 @@ class Post extends Component {
     return (
       <div>
         <Topic />
-        <div className='post-container'>
+        <div className='post-form-container'>
           <br />
           <form className='post-form' onSubmit={this.submit}>
             <h3>Post an Argument</h3>

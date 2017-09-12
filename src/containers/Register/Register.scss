@@ -1,9 +1,16 @@
 .register-container {
   display: flex;
   justify-content: center;
-
+  flex-wrap: wrap;
+  
   .warning {
     color: red;
     margin-left: 10px;
+  }
+
+  .register-error-message {
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
   }
 }

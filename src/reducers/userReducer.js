@@ -6,20 +6,49 @@ const userId = localStorage.getItem('userId')
 const initialState = {
   loggedIn: !!username,
   username,
-  userId
+  userId,
+  message: null
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.LOGIN_SUCCESS:
-      const { username, _id } = action.response.data.user;
+      if (!action.response || !action.response.data || !action.response.data.user) {
+        const { message } = action.response.data;
+        return {
+          ...state,
+          message
+        };
+      }
+      const { username, _id } = action.response && action.response.data && action.response.data.user;
       return {
+        ...state,
         loggedIn: true,
         username,
-        userId: _id
+        userId: _id,
+        message: null
       }
+    case actions.REGISTER_SUCCESS: {
+      const { username, _id } = action.response && action.response.data && action.response.data.user;
+      if (!action.response || !action.response.data || !action.response.data.user) {
+        const { message } = action.response.data;
+        return {
+          ...state,
+          message
+        };
+      }
+      
+      return {
+        ...state,
+        loggedIn: true,
+        username,
+        userId: _id,
+        message: null
+      }
+    }
     case actions.LOGOUT:
       return {
+        ...state,
         loggedIn: false,
         username: null,
         userId: null

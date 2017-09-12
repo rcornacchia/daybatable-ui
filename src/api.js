@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from './config';
+console.log(config);
 
 export const get = url => axios.get(url, { headers });
 

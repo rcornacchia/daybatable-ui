@@ -24,6 +24,7 @@ class Login extends Component {
 
   render() {
     const { warning } = this.state;
+    const { message } = this.props;
     return (
       <div className='login-container'>
         <form onSubmit={this.submit} >
@@ -38,12 +39,19 @@ class Login extends Component {
             type='password' />
           <br />
           <RaisedButton label='Login' type='submit' />
-          <span className='warning'>{warning}</span>          
+          <span className='warning'>{warning}</span>
         </form>
+        <div className='login-error-message'>
+          <span className='warning'>{message}</span>
+        </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  message: state.user.message
+})
 
 const mapDispatchToProps = dispatch => ({
   login: () => dispatch(login())
@@ -64,4 +72,4 @@ Login = reduxForm({
   form: 'login',
   validate
 })(Login);
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

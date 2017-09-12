@@ -1,23 +1,31 @@
+feedback:
+  - register
+    + should automatically log you in
+  - Post argument
+    + should be centered
+    + also shouldn't navigate you away from the main page
+    + Post argument button shouldn't be uptop
+
 MVP:
-= fix post upvote button
-= Add username (and maybe date) to Post
-= Create landing page
-= set up domain name
+- Create landing page
+- set up domain name
+- BUG: Notify user if login is incorrect
+- BUG: cannot GET /register or anything other than index
 
 1.0:
-= Add timer til next debate
-= LOGIN FORM: let user know if combination is incorrect
-= UPCOMING DEBATES
+- Add timer til next debate
+- LOGIN FORM: let user know if combination is incorrect
+- UPCOMING DEBATES
   + update about page
-= POST NEW DEBATE TOPIC
+- POST NEW DEBATE TOPIC
   + Plus form validation
-= Think about user sign on flow
+- Think about user sign on flow
   + if a user registers, should they be automatically logged in?
-= TOKEN VALIDATION: Check for valid token, if invalid => relogin
-= CHECK AUTH BEFORE API CALL: Before a user upvotes, make sure they're logged in. If not => ask them to log in
-= HTTPS
-= robots.txt
+- TOKEN VALIDATION: Check for valid token, if invalid => relogin
+- CHECK AUTH BEFORE API CALL: Before a user upvotes, make sure they're logged in. If not => ask them to log in
+- HTTPS
+- robots.txt
 
 Nice to have:
-= Server side rendering
-= Maybe use immutable js?
+- Server side rendering
+- Maybe use immutable js?

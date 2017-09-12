@@ -21,13 +21,12 @@ function* loginSaga() {
 function* loginSuccessSaga(action) {
   const { data } = action.response;
 
-  if (data) {
+  if (data && data.user) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('username', data.user.username);
     localStorage.setItem('userId', data.user._id);
+    yield put(push('/'));
   }
-
-  yield put(push('/'));
 }
 
 export default rootSaga;

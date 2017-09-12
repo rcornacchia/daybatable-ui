@@ -4,12 +4,13 @@
   "description": "Daybatable client",
   "main": "index.js",
   "scripts": {
-    "build:local": "MODE='DEV' webpack --progress",
-    "dev": "webpack-dev-server -d --hot",
+    "build:local": "MODE='DEV' webpack --progress --watch",
+    "dev": "MODE='DEV' webpack-dev-server -d --hot",
     "prod": "webpack -p",
     "start": "npm run prod",
     "webpack": "webpack --progress --color",
-    "watch": "webpack --progress --color --watch"
+    "watch": "webpack --progress --color --watch",
+    "watch:dev": "MODE='DEV' webpack --progress --color --watch"
   },
   "author": "Rob Cornacchia",
   "license": "ISC",

@@ -16,7 +16,6 @@ class Post extends Component {
   render() {
     const { position, post, upvote, userId } = this.props;
     const date = post && moment(post.datePosted).fromNow();
-    console.log(date);
 
     let btn;
     if (!post.votes.find(id => id === userId)) {
