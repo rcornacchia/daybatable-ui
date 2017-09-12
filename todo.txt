@@ -1,22 +1,22 @@
-feedback:
-  - Post argument
-    + also shouldn't navigate you away from the main page
-    + Post argument button shouldn't be uptop
-
 MVP:
 - set up domain name
-- Create landing page
-- Set up daybatable account on mongodb atlas
-- BUG: cannot GET /register or anything other than index
-- shut down mongo on ec2 instance
-
-1.0:
+- Post argument
+  + Shouldn't navigate you away from the main page
+  + Post argument button shouldn't be uptop
+- Set up Google Analytics
 - Add timer til next debate
 - UPCOMING DEBATES
   + update about page
-- POST NEW DEBATE TOPIC
+  + POST NEW DEBATE TOPIC
   + Plus form validation
+- Create landing page
+- BUG: cannot GET /register or anything other than index
+- update credit card info with new credit card
+
+1.0:
 - DEBATE ARCHIVES
+- iterate on vote button
+- Optimize for mobile phones
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin
 - HTTPS
 
