@@ -10,7 +10,7 @@ const rootSaga = function* rootSaga() {
 function* initSaga() {
   try {
     const response = yield call(init);
-    if (response.data.success) {
+    if (response.data.success && response.data.debate) {
       yield put({ type: actions.INIT_SUCCESS, response });
     } else {
       throw response;
