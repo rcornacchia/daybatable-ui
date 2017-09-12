@@ -21,8 +21,9 @@ injectTapEventPlugin();
 
 // Google Analytics
 ReactGA.initialize('UA-106316218-1'); 
-function fireTracking() {
-  ReactGA.pageview(window.location.hash);
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 const store = configureStore(rootReducer);
@@ -32,7 +33,7 @@ render(
   <Provider store={store}>
     <MuiThemeProvider>
       <div>
-        <Router history={browserHistory} onUpdate={fireTracking}>
+        <Router history={browserHistory} onUpdate={logPageView}>
           <Route path='/' component={App}>
             <IndexRoute component={PostsLayout} />
             <Route path='about' component={About} />          
