@@ -20,7 +20,6 @@ function* registerSaga() {
 
 function* registerSuccessSaga(action) {
   const { data } = action.response;
-  console.log(data);
 
   if (data) {
     localStorage.setItem('token', data.token);

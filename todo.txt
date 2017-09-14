@@ -12,6 +12,7 @@ MVP:
 - Create landing page
 - BUG: cannot GET /register or anything other than index
 - update credit card info with new credit card
+- create favicon
 
 1.0:
 - DEBATE ARCHIVES

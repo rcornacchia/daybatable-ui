@@ -1,11 +1,11 @@
 import axios from 'axios';
 import config from './config';
 
-export const get = url => axios.get(url, { headers });
+export const get = url => axios.get(url, { headers: getHeaders() });
 
-export const post = (url, data) => axios.post(url, data, { headers });
+export const post = (url, data) => axios.post(url, data, { headers: getHeaders() });
 
-const headers = {
+function getheaders {
   'Authorization': 'Bearer ' + getToken()
 }
 
