@@ -1,11 +1,11 @@
 import axios from 'axios';
 import config from './config';
 
-export const get = url => axios.get(url, { headers: getHeaders() });
-export const post = (url, data) => axios.post(url, data, { headers: getHeaders() });
-
 const getheaders = () => ({ 'Authorization': 'Bearer ' + getToken() });
 const getToken = () => localStorage.getItem('token');
+
+export const get = url => axios.get(url, { headers: getHeaders() });
+export const post = (url, data) => axios.post(url, data, { headers: getHeaders() });
 
 export const init = () => {
   const url = `${config.server}/api/init`;
