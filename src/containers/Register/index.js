@@ -64,7 +64,7 @@ class Register extends Component {
           <RaisedButton label='Register' type='submit' />
           <span className='warning'>{warning}</span>     
         </form>
-        <div className='login-error-message'>
+        <div className='register-error-message'>
           <span className='warning'>{message}</span>
         </div>
       </div>
