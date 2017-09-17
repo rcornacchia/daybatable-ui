@@ -3,7 +3,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import FileFileDownload from 'material-ui/svg-icons/file/file-download';
 
 class UserDropDown extends Component {
@@ -33,7 +33,7 @@ class UserDropDown extends Component {
     return (
       <div className='username-dropdown right-link'>
         <IconMenu
-          iconButtonElement={<RaisedButton onTouchTap={this.handleOpenMenu} label={username} />}
+          iconButtonElement={<FlatButton onTouchTap={this.handleOpenMenu} label={username} />}
           open={this.state.openMenu}
         >
           <MenuItem value="1" primaryText={username} onClick={this.close} />

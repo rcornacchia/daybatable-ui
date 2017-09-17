@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
+import Card from '../../components/Card';
 import { register } from './actions';
 import { checkIfUserExists } from './api';
 import './Register.scss';
@@ -33,41 +34,45 @@ class Register extends Component {
     const { warning } = this.state;
     const { message } = this.props;
     return (
-      <div className='register-container'>
-        <form className='register-form' onSubmit={this.submit}>
-          <Field name='email'
-            style={style}        
-            component={renderTextField}
-            floatingLabelText='Email' />
-          <Field name='username'
-            style={style}
-            component={renderTextField}
-            floatingLabelText='Username' />
-          <Field name='password'
-            style={style}          
-            component={TextField}
-            floatingLabelText='Password'
-            type='password' />
-          <Field name='repeatPassword'
-            style={style}          
-            component={TextField}
-            floatingLabelText='Re-enter password'
-            type='password' />
-          <Field name='firstName'
-            style={style}
-            component={TextField}
-            floatingLabelText='First Name' />
-          <Field name='lastName'
-            style={style}
-            component={TextField}
-            floatingLabelText='Last Name' />
-          <RaisedButton label='Register' type='submit' />
-          <span className='warning'>{warning}</span>     
-        </form>
-        <div className='register-error-message'>
-          <span className='warning'>{message}</span>
+      <Card>
+        <div className='register-container'>
+          <form className='register-form' onSubmit={this.submit}>
+            <Field name='email'
+              style={style}        
+              component={renderTextField}
+              floatingLabelText='Email' />
+            <Field name='username'
+              style={style}
+              component={renderTextField}
+              floatingLabelText='Username' />
+            <Field name='password'
+              style={style}          
+              component={TextField}
+              floatingLabelText='Password'
+              type='password' />
+            <Field name='repeatPassword'
+              style={style}          
+              component={TextField}
+              floatingLabelText='Re-enter password'
+              type='password' />
+            <Field name='firstName'
+              style={style}
+              component={TextField}
+              floatingLabelText='First Name' />
+            <Field name='lastName'
+              style={style}
+              component={TextField}
+              floatingLabelText='Last Name' />
+            <div className='register-button'>
+              <RaisedButton label='Register' type='submit' />
+            </div>
+            <span className='warning'>{warning}</span>     
+          </form>
+          <div className='register-error-message'>
+            <span className='warning'>{message}</span>
+          </div>
         </div>
-      </div>
+      </Card>
     );
   }
 }

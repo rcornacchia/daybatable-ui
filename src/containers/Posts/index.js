@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
 import { upvotePost, unvotePost, upvoteDebate } from './actions';
+import AwesomeButton from 'react-awesome-button';
 import './Posts.scss';
 
 class Posts extends Component {
@@ -60,6 +61,7 @@ class Posts extends Component {
         <div className='position-title'>
           <div className={`position-border position-border-${position}`}>
             { voteBtn }
+            <AwesomeButton>Vote</AwesomeButton>
             <div className='position'>{positionTitle.toUpperCase()}</div>
           </div>
           <span className={`warning warning-${position}`}>{warning}</span>

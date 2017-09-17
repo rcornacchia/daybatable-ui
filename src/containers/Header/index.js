@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import UserDropDown from './UserDropDown';
 import './Header.scss';
 
@@ -13,10 +13,10 @@ class Header extends Component {
     let navRight = (
       <div>
         <Link to='/about' className='link right-link'>
-          <RaisedButton label='About' />
+          <FlatButton label='About' />
         </Link>
         <Link to='/post' className='link right-link'>
-          <RaisedButton label='Post Argument' />
+          <FlatButton label='Post Argument' />
         </Link>
         <UserDropDown username={username} logout={logout}/>
       </div>
@@ -26,13 +26,13 @@ class Header extends Component {
       navRight = (
         <div>
           <Link to='/about' className='link right-link'>
-            <RaisedButton label='About' />
+            <FlatButton label='About' />
           </Link>
           <Link to='/login' className='link right-link'>
-            <RaisedButton label='Login' />
+            <FlatButton label='Login' />
           </Link>
           <Link to='/register' className='link right-link'>
-            <RaisedButton label='Register' />
+            <FlatButton label='Register' />
           </Link>
         </div>
       );
@@ -42,7 +42,7 @@ class Header extends Component {
       <div className='header-container'>
         <div className='navbar'>
           <Link to='/' className='link'>
-            <RaisedButton label='Daybatable' />
+            <FlatButton label='Daybatable' />
           </Link>
           <div className='navbar-right'>
             {navRight}

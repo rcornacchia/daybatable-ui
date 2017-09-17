@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 30%;
+  min-width: 300px;
+  margin: 0 auto;
   
   .warning {
     color: red;
@@ -12,5 +15,10 @@
     width: 100%;
     margin-top: 5px;
     text-align: center;
+  }
+
+  .login-button {
+    float: right;
+    padding-top: 15px;
   }
 }

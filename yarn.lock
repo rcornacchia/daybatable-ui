@@ -3510,6 +3510,13 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-awesome-button@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-awesome-button/-/react-awesome-button-0.1.5.tgz#f8fda677df1a38605385f57c5623dfc349cde8b9"
+  dependencies:
+    prop-types "^15.5.8"
+    react "^15.5.4"
+
 react-base16-styling@^0.5.1:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/react-base16-styling/-/react-base16-styling-0.5.3.tgz#3858f24e9c4dd8cbd3f702f3f74d581ca2917269"
