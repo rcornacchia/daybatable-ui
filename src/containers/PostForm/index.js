@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { TextField, RadioButtonGroup } from 'redux-form-material-ui';
 import { RadioButton } from 'material-ui/RadioButton'
 import RaisedButton from 'material-ui/RaisedButton';
+import Card from '../../components/Card';
 import Topic from '../Topic';
 import { post } from './actions';
 import './PostForm.scss';
@@ -29,26 +30,28 @@ class Post extends Component {
     return (
       <div>
         <Topic />
-        <div className='post-form-container'>
-          <br />
-          <form className='post-form' onSubmit={this.submit}>
-            <h3>Post an Argument</h3>
-            <Field name='position' component={RadioButtonGroup} >
-              <RadioButton value='for' label={forPosition} iconStyle={{fill: '#00A8E8'}} />
-              <RadioButton value='against' label={againstPosition} iconStyle={{fill: '#F22B4A'}} />
-            </Field>
-            <Field name ='postText'
-              className='post-textfield'
-              component={TextField}
-              floatingLabelText='Argument'
-              multiLine
-              rows={3} 
-              style={styles.textfield}/>
+        <Card minWidth='650px'>
+          <div className='post-form-container'>
             <br />
-            <RaisedButton label='submit' type='submit'/>
-            <span className='warning'>{warning}</span>          
-          </form>
-        </div>
+            <form className='post-form' onSubmit={this.submit}>
+              <h3>Post an Argument</h3>
+              <Field name='position' component={RadioButtonGroup} >
+                <RadioButton value='for' label={forPosition} iconStyle={{fill: '#00A8E8'}} />
+                <RadioButton value='against' label={againstPosition} iconStyle={{fill: '#F22B4A'}} />
+              </Field>
+              <Field name ='postText'
+                className='post-textfield'
+                component={TextField}
+                floatingLabelText='Argument'
+                multiLine
+                rows={3} 
+                style={styles.textfield}/>
+              <br />
+              <RaisedButton label='submit' type='submit' className='post-form-submit-btn'/>
+              <span className='warning'>{warning}</span>          
+            </form>
+          </div>
+        </Card>
       </div>
     )
   }

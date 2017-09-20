@@ -48,7 +48,8 @@
   }
 
   .position-btn {
-    min-width: 50px;
+    // width: 50px;
+    float: right;
     margin-right: 7px;
   }
   
@@ -67,9 +68,15 @@
 
 .position-title {
   font-weight: 900;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .left, .right {
+    flex: 1;
+    float: right;
+  }
 
   .warning {
     position: fixed;
@@ -84,5 +91,9 @@
 
   .warning-against {
     right: 10px;    
+  }
+
+  .position {
+    font-size: 30px;
   }
 }

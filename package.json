@@ -23,6 +23,7 @@
     "lodash": "^4.17.4",
     "material-ui": "^0.18.7",
     "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "react": "^15.5.4",
     "react-awesome-button": "^0.1.5",
     "react-dom": "^15.5.4",
@@ -38,7 +39,8 @@
     "redux-devtools": "^3.4.0",
     "redux-form": "^6.8.0",
     "redux-form-material-ui": "^4.2.0",
-    "redux-saga": "^0.15.4"
+    "redux-saga": "^0.15.4",
+    "styled-components": "^2.1.2"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",

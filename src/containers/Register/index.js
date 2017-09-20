@@ -33,6 +33,7 @@ class Register extends Component {
   render() {
     const { warning } = this.state;
     const { message } = this.props;
+
     return (
       <Card>
         <div className='register-container'>

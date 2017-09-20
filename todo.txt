@@ -1,16 +1,16 @@
 MVP:
 - https://github.com/rcaferati/react-awesome-button
+- Add card to Login form and Post argument form
 - Post argument
   + Shouldn't navigate you away from the main page
   + Post argument button shouldn't be uptop
-- Set up Google Analytics
 - Add timer til next debate
+  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
 - UPCOMING DEBATES
   + update about page
   + POST NEW DEBATE TOPIC
   + Plus form validation
 - Create landing page
-- BUG: cannot GET /register or anything other than index
 - update credit card info with new credit card
 - create favicon
 

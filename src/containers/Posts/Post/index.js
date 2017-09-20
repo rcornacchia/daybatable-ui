@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Button from '../../../components/Button';
 import './Post.scss';
 
 class Post extends Component {
