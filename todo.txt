@@ -1,6 +1,4 @@
 MVP:
-- https://github.com/rcaferati/react-awesome-button
-- Add card to Login form and Post argument form
 - Post argument
   + Shouldn't navigate you away from the main page
   + Post argument button shouldn't be uptop
@@ -10,12 +8,15 @@ MVP:
   + update about page
   + POST NEW DEBATE TOPIC
   + Plus form validation
+  + add ability to take highest rated upcoming debate, and set it to the next debate at noon
 - Create landing page
-- update credit card info with new credit card
-- create favicon
+- BUG: when signed out, vote buttons are grayed out
+- create favicon (maybe sun icon)
+- add date ended to debate object
+- ability to create debate with Stripe payment platform
+- DEBATE ARCHIVES
 
 1.0:
-- DEBATE ARCHIVES
 - iterate on vote button
 - Optimize for mobile phones
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin

@@ -19,7 +19,7 @@
 
 .post-username-container {
   display: inline-block;
-  width: 91%;  
+  width: 80%;  
 }
 
 .post-username {
@@ -33,6 +33,13 @@
 .post-container {
   display: inline-block;
   padding: 10px 10px 0 10px;
+
+  .aws-btn--icon {
+    width: 70px;
+    height: 27px;
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 .post-vote-btn {
@@ -49,6 +56,11 @@
     margin-right: 5px;
     float: right;
   }
+}
+
+.post-vote-btn-container {
+  display: inline-block;
+  margin-right: 2%;
 }
 
 .votes {

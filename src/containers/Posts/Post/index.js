@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Button from '../../../components/Button';
+import CrunchyButton from '../../../components/CrunchyButton';
 import './Post.scss';
 
 class Post extends Component {
@@ -17,33 +18,27 @@ class Post extends Component {
   render() {
     const { position, post, upvote, userId } = this.props;
     const date = post && moment(post.datePosted).fromNow();
+    
+    let action = this.vote;
+    let btnType = 'unvoted';
 
-    let btn;
-    if (!post.votes.find(id => id === userId)) {
-      btn = (
-        <a className={`votes vote-btn post-vote-btn ${position}-btn post-vote-btn`} onClick={this.vote}>
-          <span className='plus-button'>+</span>
-          <span className='number-votes'>{post.votes.length}</span>
-        </a>
-      );
-    } else {
-      btn = (
-        <a className={`votes vote-btn post-vote-btn ${position}-btn voted-${position}`} onClick={this.unvote}>
-          <span className='number-votes'>{post.votes.length}</span>
-        </a>
-      );
+    if (post.votes.find(id => id === userId)) {
+      btnType = position;
+      action = this.unvote;
     }
 
     return (
       <div className={`post ${position}`}>
-        <div>
-          <div className='vote-btn-container'>
-            {btn}
-          </div>
-          <div className='post-username-container'>
-            <span className='post-username'>{post.username}</span>
-            <span className='post-date'> posted {date}</span>
-          </div>
+        <div className='post-vote-btn-container'>
+          <CrunchyButton size='icon'
+            type={btnType}
+            action={action}>
+            {post.votes.length} votes
+          </CrunchyButton>
+        </div>
+        <div className='post-username-container'>
+          <span className='post-username'> {post.username}</span>
+          <span className='post-date'> posted {date}</span>
         </div>
         <div className='post-container'>
           <div>{post.postText}</div>

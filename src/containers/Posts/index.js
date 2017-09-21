@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
 import { upvotePost, unvotePost, upvoteDebate } from './actions';
-import AwesomeButton from 'react-awesome-button';
-import 'react-awesome-button/src/react-awesome-button.scss';
+import { notify } from 'react-notify-toast';
+import CrunchyButton from '../../components/CrunchyButton';
 import './Posts.scss';
 
 class Posts extends Component {
@@ -17,8 +17,9 @@ class Posts extends Component {
     (userId) ? upvoteDebate(debate.debateId, position, userId)
              : this.warn();
   }
-
-  warn = () => this.setState({ warning: 'Please register or login' });
+  
+  warn = () => notify.show('Please register or login', 'error');  
+  // warn = () => this.setState({ warning: 'Please register or login' });
 
   handleClick = () => {
     console.log('click');
@@ -71,9 +72,9 @@ class Posts extends Component {
         <div className='position-title'>
           <div className='left'>
             <div className='position-btn'>
-              <AwesomeButton type={btnType} action={this.upvote}>
+              <CrunchyButton type={btnType} action={this.upvote} size='small'>
                 {votes} {(votes !== 1) ? 'votes' : 'vote'}
-              </AwesomeButton>
+              </CrunchyButton>
             </div>
           </div>
           <div className={`position position-border position-border-${position}`}>{positionTitle.toUpperCase()}</div>
