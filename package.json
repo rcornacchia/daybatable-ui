@@ -6,6 +6,7 @@
   "scripts": {
     "build:local": "MODE='DEV' webpack --progress",
     "dev": "MODE='DEV' webpack-dev-server -d --hot",
+    "deploy": "webpack --progress --color",    
     "prod": "webpack -p",
     "start": "npm run prod",
     "webpack": "webpack --progress --color",
