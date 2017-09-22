@@ -11,7 +11,6 @@ MVP:
   + add ability to take highest rated upcoming debate, and set it to the next debate at noon
 - Create landing page
 - BUG: when signed out, vote buttons are grayed out
-- create favicon (maybe sun icon)
 - add date ended to debate object
 - ability to create debate with Stripe payment platform
 - DEBATE ARCHIVES

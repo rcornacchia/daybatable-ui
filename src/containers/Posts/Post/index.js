@@ -33,7 +33,7 @@ class Post extends Component {
           <CrunchyButton size='icon'
             type={btnType}
             action={action}>
-            {post.votes.length} votes
+            {post.votes.length} {(post.votes.length !== 1) ? 'votes' : 'vote'}
           </CrunchyButton>
         </div>
         <div className='post-username-container'>
@@ -41,7 +41,7 @@ class Post extends Component {
           <span className='post-date'> posted {date}</span>
         </div>
         <div className='post-container'>
-          <div>{post.postText}</div>
+          <span>{post.postText}</span>
         </div>
       </div>
     )
