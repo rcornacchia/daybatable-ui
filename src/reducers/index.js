@@ -6,11 +6,11 @@ import debateReducer from './debateReducer';
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-    posts: postReducer,
-    debate: debateReducer,
-    form: formReducer,
-    routing: routerReducer,
-    user: userReducer
+  posts: postReducer,
+  debate: debateReducer,
+  form: formReducer,
+  routing: routerReducer,
+  user: userReducer
 });
 
 export default rootReducer;

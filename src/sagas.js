@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { takeLatest, put, call } from 'redux-saga/effects';
 import * as actions from './actionTypes';
 import { init, upvoteDebate } from './api';
@@ -5,6 +6,7 @@ import { init, upvoteDebate } from './api';
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.INIT, initSaga);
   yield takeLatest('DEBATE_UPVOTE', debateUpvoteSaga);
+  yield takeLatest(actions.TRACK_EVENT, trackEventSaga);
 }
 
 function* initSaga() {
@@ -28,6 +30,15 @@ function* debateUpvoteSaga({ userId, debateId, position }) {
   } catch (error) {
     yield put({ type: 'DEBATE_UPVOTE_FAIL', error });
   }
+}
+
+function* trackEventSaga({ category, action, label, value }) {
+  ReactGA.event(Object.assign({},
+    category ? { category } : null,
+    action   ? { action }   : null,
+    label    ? { label }    : null,
+    value    ? { value }    : null,
+  ))
 }
 
 export default rootSaga;
