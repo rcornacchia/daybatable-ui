@@ -2,6 +2,7 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { submitPost } from './api';
 import * as actions from './actionTypes';
+import { trackEvent } from '../../actions';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.POST, postSaga);
@@ -13,6 +14,11 @@ function* postSaga() {
   const debateId = yield select(state => state.debate.debateId);
   const { username, userId } = yield select(state => state.user);
   const { position, postText } = formData;
+
+  yield put(trackEvent({
+    category: 'Post',
+    action: 'Clicked Submit Post Button'
+  }));
   
   try {
     const payload = {
@@ -32,6 +38,12 @@ function* postSaga() {
 
 function* postSuccessSaga({ response, payload }) {
   const { userId } = payload;
+  
+  yield put(trackEvent({
+    category: 'Post',
+    action: 'Submitted Post successfully'
+  }));
+  
   payload._id = String(Date.now()); // give the payload a temporary _id
   payload.votes = [];
 

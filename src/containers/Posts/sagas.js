@@ -12,7 +12,7 @@ const rootSaga = function* rootSaga() {
 function* upvoteSaga({ payload }) {
   yield put(trackEvent({
     category: 'Post',
-    action: 'Voted a post'
+    action: 'Upvoted a post'
   }));
 
   try {

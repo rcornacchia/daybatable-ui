@@ -2,6 +2,7 @@ MVP:
 - Post argument
   + Shouldn't navigate you away from the main page
   + Post argument button shouldn't be uptop
+- add date ended to debate object
 - Add timer til next debate
   + https://codepen.io/kindofone/pen/DkhAz?editors=1100
 - UPCOMING DEBATES
@@ -10,8 +11,6 @@ MVP:
   + Plus form validation
   + add ability to take highest rated upcoming debate, and set it to the next debate at noon
 - Create landing page
-- BUG: when signed out, vote buttons are grayed out
-- add date ended to debate object
 - ability to create debate with Stripe payment platform
 - DEBATE ARCHIVES
 

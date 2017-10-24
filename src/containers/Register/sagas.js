@@ -1,7 +1,8 @@
 import { takeLatest, select, call, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import * as actions from './actionTypes';
-import { register } from './api';
+import { registe } from './api';
+import { trackEvent } from '../../actions';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.REGISTER, registerSaga);
@@ -10,6 +11,11 @@ const rootSaga = function* rootSaga() {
 
 function* registerSaga() {
   const payload = yield select(state => state.form.register.values);
+  yield put(trackEvent({
+    category: 'User',
+    action: 'Clicked Register Button'
+  })); 
+  
   try {
     const response = yield call(register, payload);
     yield put({ type: actions.REGISTER_SUCCESS, response });
@@ -20,6 +26,10 @@ function* registerSaga() {
 
 function* registerSuccessSaga(action) {
   const { data } = action.response;
+  yield put(trackEvent({
+    category: 'User',
+    action: 'Registered Successfully'
+  }));
 
   if (data) {
     localStorage.setItem('token', data.token);

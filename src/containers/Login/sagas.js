@@ -3,6 +3,7 @@ import { push } from 'react-router-redux';
 import ReactGA from 'react-ga';
 import * as actions from './actionTypes';
 import { login } from './api';
+import { trackEvent } from '../../actions';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.LOGIN, loginSaga);
@@ -11,6 +12,10 @@ const rootSaga = function* rootSaga() {
 
 function* loginSaga() {
   const payload = yield select(state => state.form.login.values);
+  yield put(trackEvent({
+    category: 'User',
+    action: 'Clicked Login Button'
+  }));
   try {
     const response = yield call(login, payload);
     yield put({ type: actions.LOGIN_SUCCESS, response });
@@ -21,6 +26,11 @@ function* loginSaga() {
 
 function* loginSuccessSaga(action) {
   const { data } = action.response;
+  
+  yield put(trackEvent({
+    category: 'User',
+    action: 'Logged in Successfully'
+  }));
 
   if (data && data.user) {
     localStorage.setItem('token', data.token);

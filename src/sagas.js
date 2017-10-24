@@ -6,6 +6,7 @@ import { init, upvoteDebate } from './api';
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.INIT, initSaga);
   yield takeLatest('DEBATE_UPVOTE', debateUpvoteSaga);
+  yield takeLatest('DEBATE_UPVOTE_SUCCESS', debateUpvoteSuccessSaga);
   yield takeLatest(actions.TRACK_EVENT, trackEventSaga);
 }
 
@@ -24,6 +25,11 @@ function* initSaga() {
 
 function* debateUpvoteSaga({ userId, debateId, position }) {
   const payload = { userId, debateId, position };
+  yield put(actions.trackEvent({
+    category: 'Debate',
+    action: 'User clicked on debate upvote/downvote button'
+  }));
+
   try {
     const response = yield call(upvoteDebate, payload);
     yield put({ type: 'DEBATE_UPVOTE_SUCCESS', response });
@@ -32,13 +38,20 @@ function* debateUpvoteSaga({ userId, debateId, position }) {
   }
 }
 
+function* debateUpvoteSaga() {
+  yield put(actions.trackEvent({
+    category: 'Debate',
+    action: 'Upvote/downvote debate success'
+  }));
+}
+
 function* trackEventSaga({ category, action, label, value }) {
   ReactGA.event(Object.assign({},
     category ? { category } : null,
     action   ? { action }   : null,
     label    ? { label }    : null,
     value    ? { value }    : null,
-  ))
+  ));
 }
 
 export default rootSaga;

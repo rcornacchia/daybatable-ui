@@ -19,7 +19,6 @@ class Posts extends Component {
   }
   
   warn = () => notify.show('Please register or login', 'error');  
-  // warn = () => this.setState({ warning: 'Please register or login' });
 
   handleClick = () => {
     console.log('click');
