@@ -1,6 +1,7 @@
 import ReactGA from 'react-ga';
 import { takeLatest, put, call } from 'redux-saga/effects';
 import * as actions from './actionTypes';
+import { trackEvent } from './actions';
 import { init, upvoteDebate } from './api';
 
 const rootSaga = function* rootSaga() {
@@ -25,7 +26,7 @@ function* initSaga() {
 
 function* debateUpvoteSaga({ userId, debateId, position }) {
   const payload = { userId, debateId, position };
-  yield put(actions.trackEvent({
+  yield put(trackEvent({
     category: 'Debate',
     action: 'User clicked on debate upvote/downvote button'
   }));
@@ -38,8 +39,8 @@ function* debateUpvoteSaga({ userId, debateId, position }) {
   }
 }
 
-function* debateUpvoteSaga() {
-  yield put(actions.trackEvent({
+function* debateUpvoteSuccessSaga() {
+  yield put(trackEvent({
     category: 'Debate',
     action: 'Upvote/downvote debate success'
   }));

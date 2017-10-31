@@ -1,53 +1,97 @@
 import React, { Component } from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import IconMenu from 'material-ui/IconMenu';
+import Menu from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
-import FileFileDownload from 'material-ui/svg-icons/file/file-download';
+import Popover from 'material-ui/Popover';
 
 class UserDropDown extends Component {
-  state = {
-    openMenu: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
+  }
+
+  logout = () => this.props.logout();
+
+  handleTouchTap = (event) => {
+    // This prevents ghost click.
+    event.preventDefault();
+
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
   };
 
-  handleOpenMenu = () => {
+  handleRequestClose = () => {
     this.setState({
-      openMenu: true,
+      open: false,
     });
-  }
-
-  logout = () => {
-    this.props.logout();
-  }
-
-  close = () => {
-    this.setState({
-      openMenu: false
-    });
-  }
+  };
 
   render() {
     const { username, logout } = this.props;
 
     return (
       <div className='username-dropdown right-link'>
-        <IconMenu
-          iconButtonElement={<FlatButton onTouchTap={this.handleOpenMenu} label={username} />}
-          open={this.state.openMenu}
+        <FlatButton
+          onClick={this.handleTouchTap}
+          label={username}
+        />
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
         >
-          <MenuItem value="1" primaryText={username} onClick={this.close} />
-          <MenuItem value="2" primaryText="Logout" onClick={this.logout} />
-        </IconMenu>
+          <Menu>
+            <MenuItem primaryText="Logout" onClick={this.logout}/>
+          </Menu>
+        </Popover>
       </div>
-    )
+    );
   }
 }
+//   state = {
+//     openMenu: false
+//   };
 
-const styles = {
-  customWidth: {
-    border: 0
-  }
-}
+//   handleOpenMenu = () => {
+//     this.setState({
+//       openMenu: true,
+//     });
+//   }
+
+//   logout = () => {
+//     this.props.logout();
+//   }
+
+//   close = () => {
+//     this.setState({
+//       openMenu: false
+//     });
+//   }
+
+//   render() {
+//     const { username, logout } = this.props;
+
+//     return (
+//       <div className='username-dropdown right-link'>
+//         <Menu
+//           iconButtonElement={<FlatButton onTouchTap={this.handleOpenMenu} label={username} />}
+//           open={this.state.openMenu}
+//         >
+//           <MenuItem value="1" primaryText={username} onClick={this.close} />
+//           <MenuItem value="2" primaryText="Logout" onClick={this.logout} />
+//         </Menu>
+//       </div>
+//     )
+//   }
+// }
 
 export default UserDropDown;

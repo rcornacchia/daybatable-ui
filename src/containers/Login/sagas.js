@@ -36,7 +36,7 @@ function* loginSuccessSaga(action) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('username', data.user.username);
     localStorage.setItem('userId', data.user._id);
-    ReactGA.set({ userId: username });
+    ReactGA.set({ userId: data.user.username });
     yield put(push('/'));
   }
 }
