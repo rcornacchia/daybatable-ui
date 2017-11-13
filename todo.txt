@@ -13,6 +13,11 @@ MVP:
 - Create landing page
 - ability to create debate with Stripe payment platform
 - DEBATE ARCHIVES
+- add daybatable icon
+- minify production
+- email sign upcoming
+- email after signup
+- email password reset
 
 1.0:
 - iterate on vote button

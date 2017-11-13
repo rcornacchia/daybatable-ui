@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
@@ -41,12 +42,17 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        inject: 'body',
-        favicon: 'assets/favicon.png'
-      })    
+        new webpack.DefinePlugin({
+            "process.env": {
+                "NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+            }
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html',
+            inject: 'body',
+            favicon: 'assets/favicon.png'
+        })    
     ],
     devtool: 'source-map'
 }

@@ -1,7 +1,7 @@
 import { takeLatest, select, call, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import * as actions from './actionTypes';
-import { registe } from './api';
+import { register } from './api';
 import { trackEvent } from '../../actions';
 
 const rootSaga = function* rootSaga() {
