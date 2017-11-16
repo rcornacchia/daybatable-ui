@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import FlatButton from 'material-ui/FlatButton';
 import UserDropDown from './UserDropDown';
+import icon from '../../../assets/favicon.png';
 import './Header.scss';
 
 class Header extends Component {
@@ -42,7 +43,7 @@ class Header extends Component {
       <div className='header-container'>
         <div className='navbar'>
           <Link to='/' className='link'>
-            <FlatButton label='Daybatable' />
+          <FlatButton label='Daybatable' icon={<img src={icon} className='header-icon'/>} />
           </Link>
           <div className='navbar-right'>
             {navRight}

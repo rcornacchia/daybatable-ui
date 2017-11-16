@@ -1,29 +1,29 @@
 MVP:
+- upgrade to material-ui next
+- change font
 - Post argument
   + Shouldn't navigate you away from the main page
   + Post argument button shouldn't be uptop
-- add date ended to debate object
-- Add timer til next debate
-  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
+
 - UPCOMING DEBATES
   + update about page
   + POST NEW DEBATE TOPIC
   + Plus form validation
-  + add ability to take highest rated upcoming debate, and set it to the next debate at noon
-- Create landing page
+  + At 12PM EST take highest rated upcoming debate and set it to the next debate
 - ability to create debate with Stripe payment platform
 - DEBATE ARCHIVES
-- add daybatable icon
-- minify production
-- email sign upcoming
+- email signup for upcoming debates
 - email after signup
 - email password reset
+- Optimize for mobile phones
+- HTTPS
+- Create landing page
+- Add timer til next debate
+  + add date ended to debate object
+  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
 
 1.0:
-- iterate on vote button
-- Optimize for mobile phones
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin
-- HTTPS
 
 Nice to have:
 - Server side rendering
