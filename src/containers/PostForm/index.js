@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { TextField, RadioButtonGroup } from 'redux-form-material-ui';
-import { RadioButton } from 'material-ui/RadioButton'
-import RaisedButton from 'material-ui/RaisedButton';
+import { TextField } from 'redux-form-material-ui';
+import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import Topic from '../Topic';
 import { post } from './actions';
@@ -17,16 +18,19 @@ class Post extends Component {
 
   submit = e => {
     e.preventDefault();
-    const { valid } = this.props;
-    (valid) ? this.props.post()
+    (this.props.valid) ? this.props.post()
             : this.setState({ warning: 'Oops, missed a field.' });
   }
+
+  handleChange = (event, value) => {
+    this.setState({ ...this.state, value });
+  };
 
   render() {
     const { warning } = this.state;
     const { debate } = this.props;
     const { forPosition, againstPosition } = debate;
-
+    console.log(forPosition);
     return (
       <div>
         <Topic />
@@ -35,19 +39,25 @@ class Post extends Component {
             <br />
             <form className='post-form' onSubmit={this.submit}>
               <h3>Post an Argument</h3>
-              <Field name='position' component={RadioButtonGroup} >
-                <RadioButton value='for' label={forPosition} iconStyle={{fill: '#00A8E8'}} />
-                <RadioButton value='against' label={againstPosition} iconStyle={{fill: '#F22B4A'}} />
-              </Field>
+              <div>
+                <Field
+                  name="position"
+                  component="input"
+                  type="radio"
+                  value="for"
+                  label={forPosition}
+                />
+                
+              </div>
               <Field name ='postText'
                 className='post-textfield'
                 component={TextField}
-                floatingLabelText='Argument'
+                label='Argument'
                 multiLine
-                rows={3} 
+                rows={3}  
                 style={styles.textfield}/>
               <br />
-              <RaisedButton label='submit' type='submit' className='post-form-submit-btn'/>
+              <Button raised type='submit' className='post-form-submit-btn'>Submit</Button>
               <span className='warning'>{warning}</span>          
             </form>
           </div>
@@ -58,12 +68,8 @@ class Post extends Component {
 }
 
 const styles = {
-  textfield: {
-    width: 500
-  },
-  iconStyle: {
-    fill: 'red'
-  }
+  textfield: { width: 500 },
+  iconStyle: { fill: 'red' }
 }
 
 const validate = values => {

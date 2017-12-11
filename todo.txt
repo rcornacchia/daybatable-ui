@@ -1,13 +1,19 @@
 MVP:
+- set up dev hot server
 - upgrade to material-ui next
 - change font
 - Post argument
   + Shouldn't navigate you away from the main page
   + Post argument button shouldn't be uptop
-
+- Instrument analytics events
+  + clicked Register
+  + clicked Login
+  + clicked about
+- Comments
 - UPCOMING DEBATES
   + update about page
   + POST NEW DEBATE TOPIC
+  + include the name of for and against positions (ex. egg and chicken)
   + Plus form validation
   + At 12PM EST take highest rated upcoming debate and set it to the next debate
 - ability to create debate with Stripe payment platform

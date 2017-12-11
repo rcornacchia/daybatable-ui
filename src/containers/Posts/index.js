@@ -33,36 +33,22 @@ class Posts extends Component {
 
     if (!posts) return false;
 
-    let positionTitle = '';
-    (position == 'for') ? positionTitle = forPosition
-                        : positionTitle = againstPosition;
+    const positionTitle = 
+      (position == 'for')
+      ? forPosition
+      : againstPosition;
 
-    let votes = 0;
-    (position === 'for') ? votes = debate.votesFor && debate.votesFor.length
-                         : votes = debate.votesAgainst && debate.votesAgainst.length;
+    const votes =
+      (position === 'for') 
+      ? debate.votesFor && debate.votesFor.length                                   
+      : debate.votesAgainst && debate.votesAgainst.length;
 
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
     
-    let voteBtn = (
-      <a className={`vote-btn ${position}-btn position-btn`} onClick={this.upvote}>
-        <span className='plus-button'>+</span>
-        <span className='number-votes'>{votes}</span>
-      </a>
-    );
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
-      // voteBtn = (
-      //   <a className={`vote-btn ${position}-btn position-btn voted-${position}`} onClick={this.upvote}>
-      //     <span className='number-votes'>{votes}</span>
-      //   </a>
-      // );
       btnType = 'for';
     } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
-      // voteBtn = (
-      //   <a className={`vote-btn ${position}-btn position-btn voted-${position}`} onClick={this.upvote}>
-      //     <span className='number-votes'>{votes}</span>
-      //   </a>
-      // );
       btnType = 'against';
     }
 

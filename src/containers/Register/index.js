@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import { register } from './actions';
 import { checkIfUserExists } from './api';
@@ -10,8 +10,8 @@ import './Register.scss';
 
 const renderTextField = props => (
   <TextField 
-    floatingLabelText={props.label}
-    errorText={props.touched && props.error}
+    label={props.label}
+    error={props.touched && props.error}
     {...props} />
 );
 
@@ -41,31 +41,31 @@ class Register extends Component {
             <Field name='email'
               style={style}        
               component={renderTextField}
-              floatingLabelText='Email' />
+              label='Email' />
             <Field name='username'
               style={style}
               component={renderTextField}
-              floatingLabelText='Username' />
+              label='Username' />
             <Field name='password'
               style={style}          
               component={TextField}
-              floatingLabelText='Password'
+              label='Password'
               type='password' />
             <Field name='repeatPassword'
               style={style}          
               component={TextField}
-              floatingLabelText='Re-enter password'
+              label='Re-enter password'
               type='password' />
             <Field name='firstName'
               style={style}
               component={TextField}
-              floatingLabelText='First Name' />
+              label='First Name' />
             <Field name='lastName'
               style={style}
               component={TextField}
-              floatingLabelText='Last Name' />
+              label='Last Name' />
             <div className='register-button'>
-              <RaisedButton label='Register' type='submit' />
+              <Button raised type='submit'>Register</ Button>
             </div>
             <span className='warning'>{warning}</span>     
           </form>

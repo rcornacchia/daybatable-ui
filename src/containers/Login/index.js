@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField } from 'redux-form-material-ui';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { login } from './actions';
@@ -16,11 +16,9 @@ class Login extends Component {
 
   submit = e => {
     e.preventDefault();
-    if (this.props.valid) {
-      this.props.login();
-    } else {
-      this.setState({ warning: 'Incorrect combination.' })
-    }
+    (this.props.valid)
+      ? this.props.login()
+      : this.setState({ warning: 'Incorrect combination.' })
   }
 
   render() {
@@ -32,16 +30,16 @@ class Login extends Component {
           <form onSubmit={this.submit} >
             <Field name='username'
               component={TextField}
-              floatingLabelText='username'
+              label='username'
               type='text' />
             <br />
             <Field name='password'
               component={TextField}
-              floatingLabelText='password'
+              label='password'
               type='password' />
             <br />
             <div className='login-button'>
-              <RaisedButton label='Login' type='submit' />
+              <Button raised type='submit'>Login</Button>
             </div>
             <span className='warning'>{warning}</span>
           </form>

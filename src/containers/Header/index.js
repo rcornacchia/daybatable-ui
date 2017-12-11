@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 import UserDropDown from './UserDropDown';
 import icon from '../../../assets/favicon.png';
 import './Header.scss';
@@ -14,10 +14,10 @@ class Header extends Component {
     let navRight = (
       <div>
         <Link to='/about' className='link right-link'>
-          <FlatButton label='About' />
+          <Button>About</ Button>
         </Link>
         <Link to='/post' className='link right-link'>
-          <FlatButton label='Post Argument' />
+          <Button>Post Argument</ Button>
         </Link>
         <UserDropDown username={username} logout={logout}/>
       </div>
@@ -27,13 +27,13 @@ class Header extends Component {
       navRight = (
         <div>
           <Link to='/about' className='link right-link'>
-            <FlatButton label='About' />
+            <Button>About</ Button>
           </Link>
           <Link to='/login' className='link right-link'>
-            <FlatButton label='Login' />
+            <Button>Login</ Button>
           </Link>
           <Link to='/register' className='link right-link'>
-            <FlatButton label='Register' />
+            <Button>Register</ Button>
           </Link>
         </div>
       );
@@ -43,7 +43,10 @@ class Header extends Component {
       <div className='header-container'>
         <div className='navbar'>
           <Link to='/' className='link'>
-          <FlatButton label='Daybatable' icon={<img src={icon} className='header-icon'/>} />
+            <Button>
+              {<img src={icon} className='header-icon'/>}
+              Daybatable
+            </ Button>
           </Link>
           <div className='navbar-right'>
             {navRight}
@@ -58,10 +61,8 @@ const mapStateToProps = state => ({
   user: state.user,
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch({ type: 'LOGOUT' })
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch({ type: 'LOGOUT' })
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

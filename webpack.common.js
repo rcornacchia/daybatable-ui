@@ -30,7 +30,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(png|woff|woff2|eot|ttf|otf|svg)$/,
                 loader: 'url-loader?name=assets/[name]-[hash:6].[ext]&limit=100000'
             }
         ]

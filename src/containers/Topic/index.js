@@ -19,18 +19,16 @@ export default connect(mapStateToProps)(Topic);
 const TopicContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 5px 0 30px 0;
+  margin: 0 0 30px 0;
+  background-color: #000000;
 `
 
-// FFBA08
 const TopicText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 50px;
   font-weight: 100;
   color: #ffffff;
-  background-color: #000000;
-  width: 500px;
-  height: 50px;
+  height: 85px;
 `

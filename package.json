@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "NODE_ENV='DEV' webpack --config webpack.dev.js --progress",
-    "watch:dev": "NODE_ENV='DEV' webpack --config webpack.dev.js --progress --color --watch",
+    "dev": "NODE_ENV='DEV' webpack --config webpack.dev.js --progress --color --watch",
     "build:prod": "NODE_ENV='production' webpack --config webpack.prod.js -p",
-    "watch:prod": "NODE_ENV='production' webpack --config webpack.prod.js -p --progress --color --watch"
+    "prod": "NODE_ENV='production' webpack --config webpack.prod.js -p --progress --color --watch"
   },
   "author": "Rob Cornacchia",
   "license": "ISC",
@@ -18,7 +18,7 @@
     "babel-polyfill": "^6.23.0",
     "css-loader": "^0.28.4",
     "lodash": "^4.17.4",
-    "material-ui": "^0.18.7",
+    "material-ui": "next",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "react": "^15.5.4",
@@ -31,11 +31,10 @@
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^4.0.8",
     "react-router-redux-params": "^1.0.1",
-    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-devtools": "^3.4.0",
     "redux-form": "^6.8.0",
-    "redux-form-material-ui": "^4.2.0",
+    "redux-form-material-ui": "next",
     "redux-saga": "^0.15.4",
     "styled-components": "^2.1.2"
   },
