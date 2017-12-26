@@ -23,11 +23,8 @@ class Register extends Component {
 
   submit = e => {
     e.preventDefault();
-    if (this.props.valid) {
-      this.props.register();
-    } else {
-      this.setState({ warning: 'Oops, missing data' })
-    }
+    (this.props.valid) ? this.props.register()
+                       : this.setState({ warning: 'Oops, missing data' });
   }
 
   render() {
@@ -121,11 +118,11 @@ const validate = values => {
 
 const mapStateToProps = state => ({
   message: state.user.message
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   register: () => dispatch(register())
-})
+});
 
 const style = {
   display: 'block'

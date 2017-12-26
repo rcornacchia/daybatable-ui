@@ -9,7 +9,7 @@ import './Posts.scss';
 class Posts extends Component {
   constructor(props) {
     super(props);
-    this.state = { warning: '', btnType: 'unvoted' }
+    this.state = { btnType: 'unvoted' }
   }
 
   upvote = () => {
@@ -26,10 +26,8 @@ class Posts extends Component {
   }
 
   render() {
-    const { warning } = this.state;
     const { position, posts, upvotePost, unvotePost, userId, debate } = this.props;
     const { forPosition, againstPosition } = debate;
-    let btnType = 'unvoted';
 
     if (!posts) return false;
 
@@ -45,7 +43,8 @@ class Posts extends Component {
 
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
-    
+
+    let btnType = 'unvoted';
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
       btnType = 'for';
     } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
@@ -58,14 +57,23 @@ class Posts extends Component {
           <div className='left'>
             <div className='position-btn'>
               <CrunchyButton type={btnType} action={this.upvote} size='small'>
+                {(btnType === 'unvoted') && <i className='material-icons material-icon'>keyboard_arrow_up</i>}
                 {votes} {(votes !== 1) ? 'votes' : 'vote'}
               </CrunchyButton>
             </div>
           </div>
-          <div className={`position position-border position-border-${position}`}>{positionTitle.toUpperCase()}</div>
-          <div className='right'/>
-            <span className={`warning warning-${position}`}>{warning}</span>
+          <div className={`position position-border position-border-${position}`}>
+            {positionTitle.toUpperCase()}
           </div>
+          <div className='right'>
+            <div className='add-post-btn'>
+              <CrunchyButton type='unvoted'>
+                <i className='material-icons material-icon'>add</i>
+                Add Post
+              </CrunchyButton>
+            </div>
+          </div>
+        </div>
         {
           !!posts && sortedPosts.map((post, i) => {
             return (
@@ -84,20 +92,16 @@ class Posts extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    posts: state.posts[props.position],
-    userId: state.user.userId,
-    debate: state.debate
-  }
-}
+const mapStateToProps = (state, props) => ({
+  posts: state.posts[props.position],
+  userId: state.user.userId,
+  debate: state.debate
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    upvotePost: data => dispatch(upvotePost(data)),
-    unvotePost: data => dispatch(unvotePost(data)),
-    upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  upvotePost: data => dispatch(upvotePost(data)),
+  unvotePost: data => dispatch(unvotePost(data)),
+  upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

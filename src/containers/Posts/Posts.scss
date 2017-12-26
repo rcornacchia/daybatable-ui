@@ -48,9 +48,8 @@
   }
 
   .position-btn {
-    // width: 50px;
     float: right;
-    margin-right: 38px;
+    margin-right: 15px;
   }
   
   .voted-for {
@@ -95,5 +94,17 @@
 
   .position {
     font-size: 30px;
+  }
+
+  .add-post-btn {
+    margin-left: 15px;
+  }
+
+  .material-icon {
+    font-size: 21px;
+    position: relative;
+    top: 5px;
+    right: 5px;
+    line-height: 0px;
   }
 }

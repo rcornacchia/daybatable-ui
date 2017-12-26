@@ -12,10 +12,12 @@ const rootSaga = function* rootSaga() {
 
 function* loginSaga() {
   const payload = yield select(state => state.form.login.values);
+  
   yield put(trackEvent({
     category: 'User',
     action: 'Clicked Login Button'
   }));
+
   try {
     const response = yield call(login, payload);
     yield put({ type: actions.LOGIN_SUCCESS, response });

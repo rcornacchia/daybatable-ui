@@ -1,37 +1,34 @@
 MVP:
-- set up dev hot server
-- upgrade to material-ui next
-- change font
-- Post argument
-  + Shouldn't navigate you away from the main page
-  + Post argument button shouldn't be uptop
-- Instrument analytics events
-  + clicked Register
-  + clicked Login
-  + clicked about
-- Comments
-- UPCOMING DEBATES
-  + update about page
-  + POST NEW DEBATE TOPIC
-  + include the name of for and against positions (ex. egg and chicken)
-  + Plus form validation
+- Upcoming debates
+  + post new debate topic
+    - make form textfields wider
   + At 12PM EST take highest rated upcoming debate and set it to the next debate
-- ability to create debate with Stripe payment platform
-- DEBATE ARCHIVES
+- archives of past debates
 - email signup for upcoming debates
-- email after signup
 - email password reset
 - Optimize for mobile phones
 - HTTPS
-- Create landing page
+- feedback
 - Add timer til next debate
   + add date ended to debate object
   + https://codepen.io/kindofone/pen/DkhAz?editors=1100
+- update about page
+- Create landing page
+
+
+
 
 1.0:
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin
+- ability to create debate with Stripe payment platform
+- Post argument textfield should slide in with animation
+- vote buttons should animate as they stretch
+- change font
+
 
 Nice to have:
+- Comments
 - Server side rendering
 - Maybe use immutable js?
 - robots.txt
+- set up dev hot server

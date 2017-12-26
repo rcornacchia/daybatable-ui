@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, select } from 'redux-saga/effects';
 import * as actions from './actionTypes';
 import { trackEvent } from './actions';
 import { init, upvoteDebate } from './api';
@@ -12,6 +12,10 @@ const rootSaga = function* rootSaga() {
 }
 
 function* initSaga() {
+  const username = yield select(state => state.user.username);
+  if (username) {
+    ReactGA.set({ userId: username });
+  }
   try {
     const response = yield call(init);
     if (response.data.success && response.data.debate) {
@@ -42,7 +46,7 @@ function* debateUpvoteSaga({ userId, debateId, position }) {
 function* debateUpvoteSuccessSaga() {
   yield put(trackEvent({
     category: 'Debate',
-    action: 'Upvote/downvote debate success'
+    action: 'Debate upvote/downvote debate successly recorded'
   }));
 }
 

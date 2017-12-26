@@ -6,7 +6,9 @@ import { trackEvent } from '../../actions';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(actions.POST_UPVOTE, upvoteSaga);
-  yield takeLatest(actions.POST_UNVOTE, postUnvoteSaga);
+  yield takeLatest(actions.POST_UNVOTE, unvoteSaga);
+  yield takeLatest(actions.POST_UPVOTE_SUCCESS, upvoteSuccessSaga);
+  yield takeLatest(actions.POST_UNVOTE_SUCCESS, unvoteSuccessSaga);
 }
 
 function* upvoteSaga({ payload }) {
@@ -23,7 +25,7 @@ function* upvoteSaga({ payload }) {
   }
 }
 
-function* postUnvoteSaga({ payload }) {
+function* unvoteSaga({ payload }) {
   yield put(trackEvent({
     category: 'Post',
     action: 'Unvoted a post'
@@ -35,6 +37,20 @@ function* postUnvoteSaga({ payload }) {
   } catch (e) {
     yield put({ type: actions.POST_UNVOTE_FAIL, e });
   }
+}
+
+function* upvoteSuccessSaga() {
+  yield put(trackEvent({
+    category: 'Post',
+    action: 'Upvoted post successfully'
+  }));
+}
+
+function* unvoteSuccessSaga() {
+  yield put(trackEvent({
+    category: 'Post',
+    action: 'Unvoted post successfully'
+  }));
 }
 
 export default rootSaga;

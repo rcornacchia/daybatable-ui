@@ -12,6 +12,7 @@ import PostForm from './containers/PostForm';
 import About from './layouts/About';
 import PostsLayout from './layouts/PostsLayout';
 import DevTools from './containers/DevTools';
+import CreateDebateForm from './containers/CreateDebateForm';
 
 // Google Analytics
 ReactGA.initialize('UA-106316218-1'); 
@@ -34,6 +35,7 @@ render(
             <Route path='login' component={Login} />
             <Route path='register' component={Register} />
             <Route path='post' component={PostForm} />
+            <Route path='create' component={CreateDebateForm} />
           </Route>
         </Router>
         <DevTools />
