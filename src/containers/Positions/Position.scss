@@ -1,6 +1,6 @@
-.Posts {
+.position {
+  display: inline-flex;
   width: 48vw;
-  display: inline-block;
   vertical-align: top;
 
   .vote-btn {
@@ -62,5 +62,55 @@
     background-color: #F22B4A;
     border: 1px solid #F22B4A;
     color: #ffffff;    
+  }
+}
+
+.position-container {
+  display: inline-flex;
+  padding: 15px 0;
+  width: 50vw;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 20px;
+
+  .position-title {
+    flex: 1;
+  }
+
+  .left, .right {
+    flex: 1;
+    float: right;
+  }
+
+  .warning {
+    position: fixed;
+    color: red;
+    font-size: 12px;
+    font-weight: 100;
+  }
+
+  .warning-for {
+    left: 10px;    
+  }
+
+  .warning-against {
+    right: 10px;    
+  }
+
+  .position {
+    font-size: 30px;
+  }
+
+  .add-post-btn {
+    margin-left: 15px;
+  }
+
+  .material-icon {
+    font-size: 21px;
+    position: relative;
+    top: 5px;
+    right: 5px;
+    line-height: 0px;
   }
 }

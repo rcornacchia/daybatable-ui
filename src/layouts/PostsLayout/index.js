@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Posts from '../../containers/Posts';
 import Topic from '../../containers/Topic';
+import Positions from '../../containers/Positions';
+import Posts from '../../containers/Posts';
 import PostForm from '../../containers/PostForm';
 
 const PostsLayout = () => (
   <div className='debate-layout'>
     <Topic />
-    <ArgumentsLayout className='arguments-layout'>
+    <Positions />
+    <div>
+      <PostForm />
+    </div>
+    <div>
       <Posts position='for' />
       <Posts position='against' />
-    </ArgumentsLayout>
-    <PostForm />
+    </div>
   </div>
 )
 
@@ -22,4 +26,3 @@ const ArgumentsLayout = styled.div`
   display: flex;
   justify-content: space-around
 `
-
