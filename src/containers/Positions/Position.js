@@ -49,7 +49,7 @@ class Position extends React.Component {
     console.log(againstPosition)
 
     return (
-      <div className='position-container'>
+      <div className='position-container position'>
         <div className='left'>
           <div className='position-btn'>
             <CrunchyButton type={btnType} action={this.upvote} size='small'>

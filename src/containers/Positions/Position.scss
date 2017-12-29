@@ -2,25 +2,7 @@
   display: inline-flex;
   width: 48vw;
   vertical-align: top;
-
-  .vote-btn {
-    display: inline-block;
-    border: 1px solid #000000;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    vertical-align: middle;
-
-    .plus-button {
-      margin-left: 5px;
-      float: left;
-    }
-
-    .number-votes {
-      margin-right: 5px;
-      float: right;
-    }
-  }
+  font-size: 30px;
 
   .for-btn:hover {
     border: 1px solid #00A8E8;
@@ -96,10 +78,6 @@
 
   .warning-against {
     right: 10px;    
-  }
-
-  .position {
-    font-size: 30px;
   }
 
   .add-post-btn {
