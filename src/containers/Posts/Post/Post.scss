@@ -8,10 +8,6 @@
   font-size: 14px;
 }
 
-.post, .for {
-  margin-right: 0;
-}
-
 .post:hover {
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.1);
 }
@@ -74,10 +70,12 @@
 }
 
 .for {
+  margin-right: 3.5px;
   border-left: 5px solid #00A8E8;
 }
 
 .against {
+  margin-left: 3.5px;
   border-left: 5px solid #F22B4A;
 }
 
