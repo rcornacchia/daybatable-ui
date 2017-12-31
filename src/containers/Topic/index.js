@@ -27,7 +27,7 @@ const TopicText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 35px;
   font-weight: 100;
   color: #ffffff;
   height: 85px;

@@ -15,6 +15,7 @@ const CardContainer = styled.div`
   width: 30%;
   min-width: ${props => props.minWidth ? props.minWidth : '300px'};
   margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
   padding: 20px;
 `

@@ -10,10 +10,11 @@ const rootSaga = function* rootSaga() {
 }
 
 function* postSaga() {
+  const position = yield select(state => state.posts.postFormPosition);
   const formData = yield select(state => state.form.post.values);
   const debateId = yield select(state => state.debate.debateId);
   const { username, userId } = yield select(state => state.user);
-  const { position, postText } = formData;
+  const { postText } = formData;
 
   yield put(trackEvent({
     category: 'Post',
@@ -47,8 +48,8 @@ function* postSuccessSaga({ response, payload }) {
   payload._id = String(Date.now()); // give the payload a temporary _id
   payload.votes = [];
 
-  yield put(push('/'));
   yield put({ type: actions.POST_ADD, post: payload });
+  yield put({ type: actions.POST_FORM_CLOSE });
 }
 
 export default rootSaga;

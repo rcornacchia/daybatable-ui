@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { notify } from 'react-notify-toast';
 import styled from 'styled-components';
 import { upvoteDebate } from './actions';
+import { openPostForm, closePostForm } from '../PostForm/actions';
 import CrunchyButton from '../../components/CrunchyButton';
 import './Position.scss';
 
@@ -10,28 +11,24 @@ class Position extends React.Component {
   constructor(props) {
     super(props);
     this.state = { btnType: 'unvoted' }
+    this.openPostForm = (...args) => this._openPostForm.bind(this, ...args);
   }
+
+  warn = () => notify.show('Please register or login', 'error');  
+  
+  handleClick = () => this.setState({ ...this.state, btnType: 'primary' });
+  
+  _openPostForm = position => this.props.openPostForm(position);
 
   upvote = () => {
     const { upvoteDebate, debate, position, userId } = this.props;
     (userId) ? upvoteDebate(debate.debateId, position, userId)
              : this.warn();
   }
-  
-  warn = () => notify.show('Please register or login', 'error');  
-
-  handleClick = () => {
-    console.log('click');
-    this.setState({ ...this.state, btnType: 'primary' });
-  }
 
   render() {
+    if (!this.props.debate.topic) return false;
     const { position, userId, debate } = this.props;
-
-    if (!debate.topic) return false;
-    console.log(position);
-    console.log(debate)
-
     const { forPosition, againstPosition } = debate;
 
     let btnType = 'unvoted';
@@ -44,9 +41,6 @@ class Position extends React.Component {
     const positionTitle = (position == 'for') ? forPosition : againstPosition;
     const votes = (position === 'for') ? debate.votesFor && debate.votesFor.length                                   
                                        : debate.votesAgainst && debate.votesAgainst.length;
-    console.log(positionTitle)
-    console.log(forPosition)
-    console.log(againstPosition)
 
     return (
       <div className='position-container position'>
@@ -63,7 +57,7 @@ class Position extends React.Component {
         </div>
         <div className='right'>
           <div className='add-post-btn'>
-            <CrunchyButton type='unvoted'>
+            <CrunchyButton type='unvoted' action={this.openPostForm(positionTitle)}>
               <i className='material-icons material-icon'>add</i>
               Add Post
             </CrunchyButton>
@@ -80,7 +74,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId))
+  upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
+  openPostForm: position => dispatch(openPostForm(position)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Position);

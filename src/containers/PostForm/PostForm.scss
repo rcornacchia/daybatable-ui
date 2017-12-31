@@ -1,18 +1,14 @@
-.post-form-container {
-  display: flex;
-  justify-content: center;
+.post-textfield {
+  width: 500px;
+}
 
-  .post-textfield {
-    width: 500px;
-  }
+.warning {
+  display: inline-block;
+  color: red;
+  margin: 15px 10px;
+}
 
-  .warning {
-    color: red;
-    margin-left: 10px;
-  }
-
-  .post-form-submit-btn {
-    margin-top: 10px;
-    float: right;
-  }
+.post-form-submit-btn {
+  margin-top: 10px;
+  float: right;
 }

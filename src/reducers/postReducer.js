@@ -2,22 +2,25 @@ import * as postFormactions from '../containers/PostForm/actionTypes';
 import * as postActions from '../containers/Posts/actionTypes';
 import { cloneDeep } from 'lodash';
 
+const actions = { ...postFormactions, ...postActions };
+
 const initialState = {
   for: null,
-  against: null
+  against: null,
+  postFormActive: false,
+  postFormPosition: null
 }
-
-const actions = { ...postFormactions, ...postActions };
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INIT_SUCCESS': {
-      const { posts } = action.response.data;
-      let allPosts = { 
+      const { posts, debate } = action.response.data;
+      const { forPosition, againstPosition } = debate;
+      const allPosts = { 
         for: {},
         against: {}
       };
-      posts && posts.map(post => addPost(post, allPosts));
+      posts && posts.map(post => addPost(post, allPosts, forPosition, againstPosition));
 
       return {
         ...state,
@@ -65,14 +68,34 @@ const postReducer = (state = initialState, action) => {
         ...allPosts
       }
     }
+    case actions.POST_FORM_OPEN: {
+      return {
+        ...state,
+        postFormActive: true,
+        postFormPosition: action.position
+      }
+    }
+    case actions.POST_FORM_CLOSE: {
+      return {
+        ...state,
+        postFormActive: false,
+        postFormPosition: null
+      }
+    }
+    case actions.POST_FORM_SET_POSITION: {
+      return {
+        ...state,
+        postFormPosition: action.position
+      }
+    }
     default:
       return state;
   }
 }
 
-const addPost = (post, allPosts) => {
-  (post.position === 'for') ? allPosts.for[post._id] = post
-                            : allPosts.against[post._id] = post;
+const addPost = (post, allPosts, forPosition, againstPosition) => {
+  (post.position == forPosition) ? allPosts.for[post._id] = post
+                                 : allPosts.against[post._id] = post;
 }
 
 export default postReducer;
