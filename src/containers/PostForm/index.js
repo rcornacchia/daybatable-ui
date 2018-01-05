@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { TextField } from 'redux-form-material-ui';
 import Button from 'material-ui/Button';
@@ -12,27 +11,31 @@ import './PostForm.scss';
 class Post extends Component {
   constructor(props) {
     super(props);
-    this.state = { warning: '' };
+    this.state = { warning: '', postText: '' };
     this.setPostFormPosition = (...args) => this.setPosition.bind(this, ...args);
   }
 
   submit = e => {
     e.preventDefault();
-    (this.props.valid) ? this.props.post()
-                       : this.setState({ warning: 'Oops, missed a field.' });
+    const { postText } = this.state;
+    
+    if (postText && postText.length) {
+      this.props.post(postText);
+      this.setState({ warning: '', postText: '' });
+    } else {
+      this.setState({ warning: 'Oops, missed a field.' });
+    }
   }
 
+  setPosition = (position, positionName) => this.props.setPostFormPosition(position, positionName);
+  handleChange = event => this.setState({ ...this.state, postText: event.target.value });
   closePostForm = () => this.props.closePostForm();
-
-  setPosition = position => this.props.setPostFormPosition(position);
-
-  handleChange = (event, value) => this.setState({ ...this.state, value });
 
   render() {
     const { warning } = this.state;
     const { debate: { forPosition, againstPosition }, currentPosition } = this.props;
-    const forBtnType = (currentPosition == forPosition) ? 'for' : 'unvoted';
-    const againstBtnType = (currentPosition == againstPosition) ? 'against' : 'unvoted';
+    const forBtnType = (currentPosition == 'for') ? 'for' : 'unvoted';
+    const againstBtnType = (currentPosition == 'against') ? 'against' : 'unvoted';
 
     return (
       <Card minWidth='650px'>
@@ -47,26 +50,34 @@ class Post extends Component {
           <PositionSelector>
             Position:
             <PositionBtnContainer>
-              <CrunchyButton type={forBtnType} action={this.setPostFormPosition(forPosition)} size='small'>
+              <CrunchyButton
+                type={forBtnType}
+                action={this.setPostFormPosition('for', forPosition)}
+                size='small'
+              >
                 {forPosition}
               </CrunchyButton>
             </PositionBtnContainer>
             vs
             <PositionBtnContainer>
-              <CrunchyButton type={againstBtnType} action={this.setPostFormPosition(againstPosition)} size='small'>
+              <CrunchyButton
+                type={againstBtnType}
+                action={this.setPostFormPosition('against', againstPosition)}
+                size='small'
+              >
                 {againstPosition}
               </CrunchyButton>
             </PositionBtnContainer>
           </PositionSelector>
           <form className='post-form' onSubmit={this.submit}>
-            <Field
-              name='postText'
-              className='post-textfield'
-              component={TextField}
+            <TextField
+              multiline
+              rows={4}
+              rowsMax='20'
+              margin='normal'
               label='Argument'
-              multiLine
-              rows={3}  
               style={styles.textfield}
+              onChange={this.handleChange}
             />
             <br />
             <Button 
@@ -91,20 +102,9 @@ class Post extends Component {
   }
 }
 
-const validate = values => {
-  const errors = {};
-  const requiredFields = ['position', 'postText'];
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required';
-    }
-  })
-  return errors;
-}
-
 const mapDispatchToProps = dispatch => ({
-  post: () => dispatch(post()),
-  setPostFormPosition: position => dispatch(setPostFormPosition(position)),
+  post: postText => dispatch(post(postText)),
+  setPostFormPosition: (position, positionName) => dispatch(setPostFormPosition(position, positionName)),
   closePostForm: () => dispatch(closePostForm())
 });
 
@@ -112,11 +112,6 @@ const mapStateToProps = state => ({
   debate: state.debate,
   currentPosition: state.posts.postFormPosition
 });
-
-Post = reduxForm({
-  form: 'post',
-  validate
-})(Post);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
 

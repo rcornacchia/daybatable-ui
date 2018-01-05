@@ -32,7 +32,8 @@ class Post extends Component {
         <div className='post-vote-btn-container'>
           <CrunchyButton size='icon'
             type={btnType}
-            action={action}>
+            action={action}
+          >
             {post.votes.length} {(post.votes.length !== 1) ? 'votes' : 'vote'}
           </CrunchyButton>
         </div>

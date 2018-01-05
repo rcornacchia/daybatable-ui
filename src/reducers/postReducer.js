@@ -8,7 +8,8 @@ const initialState = {
   for: null,
   against: null,
   postFormActive: false,
-  postFormPosition: null
+  postFormPosition: null,
+  postFormPositionName: null
 }
 
 const postReducer = (state = initialState, action) => {
@@ -72,7 +73,8 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         postFormActive: true,
-        postFormPosition: action.position
+        postFormPosition: action.position,
+        postFormPositionName: action.positionName
       }
     }
     case actions.POST_FORM_CLOSE: {
@@ -85,7 +87,8 @@ const postReducer = (state = initialState, action) => {
     case actions.POST_FORM_SET_POSITION: {
       return {
         ...state,
-        postFormPosition: action.position
+        postFormPosition: action.position,
+        postFormPositionName: action.positionName
       }
     }
     default:
@@ -94,8 +97,8 @@ const postReducer = (state = initialState, action) => {
 }
 
 const addPost = (post, allPosts, forPosition, againstPosition) => {
-  (post.position == forPosition) ? allPosts.for[post._id] = post
-                                 : allPosts.against[post._id] = post;
+  (post.position == 'for') ? allPosts.for[post._id] = post
+                           : allPosts.against[post._id] = post;
 }
 
 export default postReducer;

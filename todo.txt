@@ -1,5 +1,9 @@
 MVP:
-- add cancel button to postform and an x to the top right
+- create post and then upvote post is not working reliably
+
+- allow posts with newlines that are saved.
+- upvote post is no longer working
+- create post form textfield should be multiline
 - Upcoming debates
   + post new debate topic
     - make form textfields wider
@@ -17,13 +21,14 @@ MVP:
 - Create landing page
 - set width for all custom textfield forms
 - add warning toasts for clicking on add post and upvote post buttons when not logged in
-
+- move sorting of posts to reducer level so it doesn't occur every render
+- Post argument textfield should slide in with animation
 
 
 1.0:
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin
+- TOKEN should expire after a few days
 - ability to create debate with Stripe payment platform
-- Post argument textfield should slide in with animation
 - vote buttons should animate as they stretch
 - change font
 

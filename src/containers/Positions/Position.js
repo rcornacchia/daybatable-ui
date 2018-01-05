@@ -18,7 +18,7 @@ class Position extends React.Component {
   
   handleClick = () => this.setState({ ...this.state, btnType: 'primary' });
   
-  _openPostForm = position => this.props.openPostForm(position);
+  _openPostForm = (position, positionName) => this.props.openPostForm(position, positionName);
 
   upvote = () => {
     const { upvoteDebate, debate, position, userId } = this.props;
@@ -28,8 +28,11 @@ class Position extends React.Component {
 
   render() {
     if (!this.props.debate.topic) return false;
-    const { position, userId, debate } = this.props;
+    const { position, userId, currentPosition, debate } = this.props;
     const { forPosition, againstPosition } = debate;
+    const positionName = (position == 'for') ? forPosition : againstPosition;
+    const votes = (position === 'for') ? debate.votesFor && debate.votesFor.length                                   
+                                       : debate.votesAgainst && debate.votesAgainst.length;
 
     let btnType = 'unvoted';
     if (position === 'for' && debate.votesFor.find(id => id === userId)) {
@@ -38,9 +41,9 @@ class Position extends React.Component {
       btnType = 'against';
     }
 
-    const positionTitle = (position == 'for') ? forPosition : againstPosition;
-    const votes = (position === 'for') ? debate.votesFor && debate.votesFor.length                                   
-                                       : debate.votesAgainst && debate.votesAgainst.length;
+    let addBtnType = 'unvoted';
+    if (currentPosition == 'for' && position == 'for') addBtnType = 'for';
+    if (currentPosition == 'against' && position == 'against') addBtnType = 'against';
 
     return (
       <div className='position-container position'>
@@ -53,11 +56,11 @@ class Position extends React.Component {
           </div>
         </div>
         <div className={`position position-border position-border-${position} position-title`}>
-          {positionTitle.toUpperCase()}
+          {positionName.toUpperCase()}
         </div>
         <div className='right'>
           <div className='add-post-btn'>
-            <CrunchyButton type='unvoted' action={this.openPostForm(positionTitle)}>
+            <CrunchyButton type={addBtnType} action={this.openPostForm(position, positionName)}>
               <i className='material-icons material-icon'>add</i>
               Add Post
             </CrunchyButton>
@@ -70,12 +73,13 @@ class Position extends React.Component {
 
 const mapStateToProps = (state, props) => ({
   userId: state.user.userId,
-  debate: state.debate
+  debate: state.debate,
+  currentPosition: state.posts.postFormPosition
 });
 
 const mapDispatchToProps = dispatch => ({
   upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
-  openPostForm: position => dispatch(openPostForm(position)),
+  openPostForm: (position, positionName) => dispatch(openPostForm(position, positionName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Position);

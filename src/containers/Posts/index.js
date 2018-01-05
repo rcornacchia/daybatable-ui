@@ -8,10 +8,8 @@ import './Posts.scss';
 
 class Posts extends Component {
   render() {
+    if (!this.props.posts) return false;
     const { position, posts, upvotePost, unvotePost, userId, debate } = this.props;
-
-    if (!posts) return false;
-
     const sortedPosts = Object.keys(posts).map(id => posts[id]);
     sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
 

@@ -1,10 +1,11 @@
 import * as actions from './actionTypes';
 
-export const post = () => ({ type: actions.POST });
+export const post = postText => ({ type: actions.POST, postText });
 
-export const openPostForm = position => ({
+export const openPostForm = (position, positionName) => ({
   type: actions.POST_FORM_OPEN,
-  position
+  position,
+  positionName
 });
 
 export const closePostForm = position => ({
@@ -12,7 +13,8 @@ export const closePostForm = position => ({
   position
 });
 
-export const setPostFormPosition = position => ({
+export const setPostFormPosition = (position, positionName) => ({
   type: actions.POST_FORM_SET_POSITION,
-  position
+  position,
+  positionName
 })
