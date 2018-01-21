@@ -22,6 +22,9 @@ const postReducer = (state = initialState, action) => {
         against: {}
       };
       posts && posts.map(post => addPost(post, allPosts, forPosition, againstPosition));
+      
+      // const sortedPosts = Object.keys(allPosts).map(id => allPosts[id]);
+      // sortedPosts.sort((a, b) => b.votes.length - a.votes.length);
 
       return {
         ...state,

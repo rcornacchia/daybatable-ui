@@ -23,7 +23,7 @@ class CreateDebateForm extends React.Component {
     const { warning } = this.state;
 
     return (
-      <Card minWidth='650px'>
+      <Card minWidth='650px' marginTop='20px'>
         <form onSubmit={this.submit}>
           <Field
             name='topic'

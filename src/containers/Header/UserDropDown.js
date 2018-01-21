@@ -37,7 +37,7 @@ class UserDropDown extends Component {
           open={this.state.open}
           anchorEl={this.state.anchorEl}
           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          onRequestClose={this.handleRequestClose}
+          onClose={this.handleRequestClose}
         >
           <Button onClick={this.logout}>Logout</Button>
         </Popover>

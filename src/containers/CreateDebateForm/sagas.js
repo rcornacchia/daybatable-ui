@@ -31,6 +31,7 @@ function* createDebateSuccessSaga() {
     category: 'Debate',
     action: 'Submitted debate successfully'
   }));
+  yield put(push('/'));
 }
 
 export default rootSaga;

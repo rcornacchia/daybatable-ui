@@ -1,37 +1,31 @@
 MVP:
-- create post and then upvote post is not working reliably
-
-- allow posts with newlines that are saved.
-- upvote post is no longer working
-- create post form textfield should be multiline
+- move sorting of posts to reducer level so it doesn't occur every render
+- websockets to share posts and activity in real time
+- set width for all custom textfield forms
+- HTTPS
+- Add timer til next debate
+  + add date ended to debate object
+  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
 - Upcoming debates
-  + post new debate topic
-    - make form textfields wider
+  + view all upcoming debates
+  + make form textfields wider for post new debate topic
   + At 12PM EST take highest rated upcoming debate and set it to the next debate
 - archives of past debates
 - email signup for upcoming debates
 - email password reset
-- Optimize for mobile phones
-- HTTPS
-- feedback
-- Add timer til next debate
-  + add date ended to debate object
-  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
-- update about page
-- Create landing page
-- set width for all custom textfield forms
-- add warning toasts for clicking on add post and upvote post buttons when not logged in
-- move sorting of posts to reducer level so it doesn't occur every render
-- Post argument textfield should slide in with animation
-
 
 1.0:
+- update about page
+- Create landing page
+- Post argument textfield should slide in with animation
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin
 - TOKEN should expire after a few days
+- Optimize for mobile phones
 - ability to create debate with Stripe payment platform
 - vote buttons should animate as they stretch
 - change font
-
+- feedback
+- create post form textfield should be black not blue
 
 Nice to have:
 - Comments

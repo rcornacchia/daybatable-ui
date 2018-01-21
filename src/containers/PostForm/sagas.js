@@ -40,7 +40,6 @@ function* postSaga({ postText }) {
 
 function* postSuccessSaga({ response, payload }) {
   const { userId } = payload;
-  console.log(response);
   
   yield put(trackEvent({
     category: 'Post',

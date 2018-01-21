@@ -34,7 +34,6 @@ render(
             <Route path='about' component={About} />          
             <Route path='login' component={Login} />
             <Route path='register' component={Register} />
-            <Route path='post' component={PostForm} />
             <Route path='create' component={CreateDebateForm} />
           </Route>
         </Router>

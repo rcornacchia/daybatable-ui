@@ -1,4 +1,5 @@
 import { cloneDeep } from 'lodash';
+import * as actions from '../actionTypes';
 
 const initialState = {
   debateId: null,
@@ -11,7 +12,7 @@ const initialState = {
 
 const debateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'INIT_SUCCESS': {
+    case actions.INIT_SUCCESS: {
       const { _id, topic, votesFor, votesAgainst, forPosition, againstPosition } = action.response.data.debate;
       return {
         ...state,
@@ -23,7 +24,7 @@ const debateReducer = (state = initialState, action) => {
         againstPosition
       };
     }
-    case 'DEBATE_UPVOTE':
+    case actions.DEBATE_UPVOTE:
       const { debateId, position, userId } = action;
       const newState = cloneDeep(state);
       const votesFor = newState.votesFor;

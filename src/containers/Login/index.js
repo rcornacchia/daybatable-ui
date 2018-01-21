@@ -25,7 +25,7 @@ class Login extends Component {
     const { warning } = this.state;
     const { message } = this.props;
     return (
-      <Card>
+      <Card marginTop='20px'>
         <div className='login-container'>
           <form onSubmit={this.submit} >
             <Field name='username'

@@ -24,7 +24,7 @@ class Posts extends Component {
                 upvote={upvotePost}
                 unvote={unvotePost}
                 userId={userId}
-                warn={this.warn} />
+              />
             );
           })
         }

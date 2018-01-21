@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { TextField } from 'redux-form-material-ui';
+import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import { post, setPostFormPosition, closePostForm } from './actions';
@@ -43,7 +43,7 @@ class Post extends Component {
           <h3 className='post-form-title'>
             Post an Argument
             <div className='post-form-close-btn'>
-              <i className='material-icons' onClick={this.closePostForm}>clear</i>
+              <i className='material-icons close-icon' onClick={this.closePostForm}>clear</i>
             </div>
           </h3>
           <br />

@@ -32,7 +32,7 @@ class Register extends Component {
     const { message } = this.props;
 
     return (
-      <Card>
+      <Card marginTop='20px'>
         <div className='register-container'>
           <form className='register-form' onSubmit={this.submit}>
             <Field name='email'

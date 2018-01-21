@@ -18,7 +18,10 @@ class Position extends React.Component {
   
   handleClick = () => this.setState({ ...this.state, btnType: 'primary' });
   
-  _openPostForm = (position, positionName) => this.props.openPostForm(position, positionName);
+  _openPostForm = (position, positionName) => {
+    this.props.userId ? this.props.openPostForm(position, positionName)
+                      : this.warn();
+  }
 
   upvote = () => {
     const { upvoteDebate, debate, position, userId } = this.props;

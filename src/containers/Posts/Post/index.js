@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { notify } from 'react-notify-toast';
 import moment from 'moment';
 import Button from '../../../components/Button';
 import CrunchyButton from '../../../components/CrunchyButton';
+
 import './Post.scss';
 
 class Post extends Component {
   vote = () => {
     const { upvote, post, userId, warn } = this.props;
-    (userId) ? upvote({ post, userId }) : warn();
+    (userId) ? upvote({ post, userId }) : this.warn();
   }
 
   unvote = () => {
-    const { unvote, post, userId, warn } = this.props;
-    (userId) ? unvote({ post, userId}) : warn();
+    const { unvote, post, userId } = this.props;
+    (userId) ? unvote({ post, userId}) : this.warn();
   }
+
+  warn = () => notify.show('Please register or login', 'error');
 
   render() {
     const { position, post, upvote, userId } = this.props;

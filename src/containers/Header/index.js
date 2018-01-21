@@ -11,20 +11,18 @@ class Header extends Component {
     const { logout, user } = this.props;
     const { username } = user;
 
-    let navRight = (
+    let navRight = (user.loggedIn) ? (
       <div>
         <Link to='/about' className='link right-link'>
           <Button>About</ Button>
         </Link>
-        <Link to='/post' className='link right-link'>
-          <Button>Post Argument</ Button>
+        <Link to='/create' className='link right-link'>
+          <Button>Add &nbsp;Debate</ Button>
         </Link>
         <UserDropDown username={username} logout={logout}/>
       </div>
-    );
-
-    if (!user.loggedIn) {
-      navRight = (
+    )
+    : (
         <div>
           <Link to='/about' className='link right-link'>
             <Button>About</ Button>
@@ -37,7 +35,6 @@ class Header extends Component {
           </Link>
         </div>
       );
-    }
     
     return (
       <div className='header-container'>
