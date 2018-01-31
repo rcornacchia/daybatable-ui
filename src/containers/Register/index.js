@@ -124,9 +124,7 @@ const mapDispatchToProps = dispatch => ({
   register: () => dispatch(register())
 });
 
-const style = {
-  display: 'block'
-}
+const style = { width: 300 };
 
 Register = reduxForm({
   form: 'register',

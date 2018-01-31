@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import TextField from 'material-ui/TextField';
+import { TextField } from 'redux-form-material-ui';
 import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -29,6 +29,9 @@ class Login extends Component {
   render() {
     const { warning } = this.state;
     const { message } = this.props;
+
+    console.log(this.props);
+
     return (
       <Card marginTop='20px'>
         <div className='login-container'>
