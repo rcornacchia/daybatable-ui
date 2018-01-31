@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField } from 'redux-form-material-ui';
+import styled from 'styled-components';
+import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Card from '../../components/Card';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { login } from './actions';
 import { Field, reduxForm } from 'redux-form';
 import './Login.scss';
+
+const Form = styled.form`
+  display: block;
+`;
 
 class Login extends Component {
   constructor(props) {
@@ -30,11 +35,13 @@ class Login extends Component {
           <form onSubmit={this.submit} >
             <Field name='username'
               component={TextField}
+              style={styles.textfield}
               label='username'
               type='text' />
             <br />
             <Field name='password'
               component={TextField}
+              style={styles.textfield}
               label='password'
               type='password' />
             <br />
@@ -76,3 +83,8 @@ Login = reduxForm({
   validate
 })(Login);
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+const styles = {
+  textfield: { width: 300 },
+  iconStyle: { fill: 'red' }
+}

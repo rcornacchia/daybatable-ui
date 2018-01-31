@@ -1,8 +1,8 @@
 import devConfig from './config.dev';
 import prodConfig from './config.prod';
 
-let config;
-(process.env.NODE_ENV === 'DEV') ? config = devConfig
-                                 : config = prodConfig;
+const config = (process.env.NODE_ENV === 'DEV')
+  ? devConfig
+  : prodConfig;
 
 export default config;

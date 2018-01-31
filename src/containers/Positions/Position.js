@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { notify } from 'react-notify-toast';
 import styled from 'styled-components';
+import socket from '../../socket';
 import { upvoteDebate } from './actions';
 import { openPostForm, closePostForm } from '../PostForm/actions';
 import CrunchyButton from '../../components/CrunchyButton';
@@ -12,6 +13,8 @@ class Position extends React.Component {
     super(props);
     this.state = { btnType: 'unvoted' }
     this.openPostForm = (...args) => this._openPostForm.bind(this, ...args);
+    // socket.on('FromAPI', data => this.setState({ response: data }));
+    socket.emit('test');
   }
 
   warn = () => notify.show('Please register or login', 'error');  
