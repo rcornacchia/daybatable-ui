@@ -7,7 +7,6 @@ MVP:
       + debate upvote/downvote
       + post upvote/downvote
 - move sorting of posts to reducer level so it doesn't occur every render
-- set width for all custom textfield forms
 - HTTPS
 - Add timer til next debate
   + add date ended to debate object

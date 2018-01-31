@@ -24,30 +24,32 @@ class CreateDebateForm extends React.Component {
 
     return (
       <Card minWidth='650px' marginTop='20px'>
-        <form onSubmit={this.submit}>
-          <Field
-            name='topic'
-            component={TextField}
-            label='Debate Topic'
-            style={styles.textfield}
-          />
-          <Field
-            name='firstPosition'
-            component={TextField}
-            label='First Position'
-            style={styles.textfield}
-          />
-          <Field
-            name='secondPosition'
-            component={TextField}
-            label='Second Position'
-            style={styles.textfield}
-          />
-          <AddBtn className='register-button'>
-            <Button raised type='submit'>Add Debate</Button>
-          </AddBtn>
-          <Warning>{warning}</Warning>
-        </form>
+        <Container>
+          <form onSubmit={this.submit}>
+            <Field
+              name='topic'
+              component={TextField}
+              label='Debate Topic'
+              style={styles.textfield}
+            />
+            <Field
+              name='firstPosition'
+              component={TextField}
+              label='First Position'
+              style={styles.textfield}
+            />
+            <Field
+              name='secondPosition'
+              component={TextField}
+              label='Second Position'
+              style={styles.textfield}
+            />
+            <AddBtn className='register-button'>
+              <Button raised type='submit'>Add Debate</Button>
+            </AddBtn>
+            <Warning>{warning}</Warning>
+          </form>
+        </Container>
       </Card>
     )
   }
@@ -78,15 +80,24 @@ export default connect(null, mapDispatchToProps)(CreateDebateForm);
 
 const styles = {
   textfield: {
-    display: 'block'
+    width: '500px'
   }
 }
 
 const AddBtn = styled.div`
   float: right;
   padding-top: 15px;
-`
+`;
 
 const Warning = styled.span`
   color: red;
-`
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 30%;
+  min-width: 300px;
+  margin: 0 auto;
+`;
