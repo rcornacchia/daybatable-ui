@@ -41,7 +41,7 @@ const List = styled.div`
 `
 
 const AboutContainer = styled.div`
-  width: 800px;
+  width: 853px;
   background-color: rgba(0,0,0, 0.15);
   padding: 20px;
 `
