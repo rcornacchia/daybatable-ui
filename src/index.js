@@ -11,6 +11,7 @@ import Register from './containers/Register';
 import PostForm from './containers/PostForm';
 import About from './layouts/About';
 import PostsLayout from './layouts/PostsLayout';
+import UpcomingDebates from './containers/UpcomingDebates';
 import DevTools from './containers/DevTools';
 import CreateDebateForm from './containers/CreateDebateForm';
 
@@ -35,6 +36,7 @@ render(
             <Route path='login' component={Login} />
             <Route path='register' component={Register} />
             <Route path='create' component={CreateDebateForm} />
+            <Route path='upcoming' component={UpcomingDebates} />
           </Route>
         </Router>
         <DevTools />

@@ -9,6 +9,7 @@ import registerSaga from '../containers/Register/sagas';
 import authenticationSaga from '../authentication/sagas';
 import postsSaga from '../containers/Posts/sagas';
 import postFormSaga from '../containers/PostForm/sagas';
+import upcomingDebatesSaga from '../containers/UpcomingDebates/sagas';
 import initSaga from '../sagas';
 import createDebateSaga from '../containers/CreateDebateForm/sagas';
 import DevTools from '../containers/DevTools';
@@ -35,6 +36,7 @@ function* rootSaga() {
     fork(postFormSaga),
     fork(postsSaga),
     fork(createDebateSaga),
+    fork(upcomingDebatesSaga),
     fork(initSaga)
   ];
 }

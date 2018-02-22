@@ -3,7 +3,6 @@ import { notify } from 'react-notify-toast';
 import moment from 'moment';
 import Button from '../../../components/Button';
 import CrunchyButton from '../../../components/CrunchyButton';
-
 import './Post.scss';
 
 class Post extends Component {

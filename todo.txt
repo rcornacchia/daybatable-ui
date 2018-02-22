@@ -6,21 +6,18 @@ MVP:
       + post creation
       + debate upvote/downvote
       + post upvote/downvote
-- move sorting of posts to reducer level so it doesn't occur every render
-- HTTPS
 - Add timer til next debate
   + add date ended to debate object
   + https://codepen.io/kindofone/pen/DkhAz?editors=1100
-- Upcoming debates
-  + view all upcoming debates
-  + make form textfields wider for post new debate topic
-  + At 12PM EST take highest rated upcoming debate and set it to the next debate
-- archives of past debates
-- email signup for upcoming debates
+- HTTPS
+- email signup for upcoming debates (we get this upon registration)
 - email password reset
+- automating the debate transition everyday at noon
 
 1.0:
 - update about page
+- move sorting of posts to reducer level so it doesn't occur every render
+- archives of past debates
 - Create landing page
 - Post argument textfield should slide in with animation
 - TOKEN VALIDATION: Check for valid token, if invalid => relogin

@@ -14,10 +14,13 @@ class Header extends Component {
     let navRight = (user.loggedIn) ? (
       <div>
         <Link to='/about' className='link right-link'>
-          <Button>About</ Button>
+          <Button>About</Button>
         </Link>
         <Link to='/create' className='link right-link'>
-          <Button>Add &nbsp;Debate</ Button>
+          <Button>Add &nbsp;Debate</Button>
+        </Link>
+        <Link to='/upcoming' className='link right-link'>
+          <Button>Upcoming &nbsp;Debates</Button>
         </Link>
         <UserDropDown username={username} logout={logout}/>
       </div>
@@ -25,13 +28,13 @@ class Header extends Component {
     : (
         <div>
           <Link to='/about' className='link right-link'>
-            <Button>About</ Button>
+            <Button>About</Button>
           </Link>
           <Link to='/login' className='link right-link'>
-            <Button>Login</ Button>
+            <Button>Login</Button>
           </Link>
           <Link to='/register' className='link right-link'>
-            <Button>Register</ Button>
+            <Button>Register</Button>
           </Link>
         </div>
       );
@@ -43,7 +46,7 @@ class Header extends Component {
             <Button>
               {<img src={icon} className='header-icon'/>}
               Daybatable
-            </ Button>
+            </Button>
           </Link>
           <div className='navbar-right'>
             {navRight}
