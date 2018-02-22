@@ -5,14 +5,18 @@ const getInitialState = {
   debates: []
 }
 
+const sort = debates => debates.sort((a, b) => b.votes.length - a.votes.length);
+
 const reducer = (state = getInitialState, action) => {
   switch (action.type) {
     case actions.GET_UPCOMING_DEBATES_SUCCESS: {
       const { response } = action;
       const debates = response && response.data && response.data.debates || [];
+      const sortedDebates = sort(debates);
+
       return {
         ...state,
-        debates,
+        debates: sortedDebates,
       }
     }
     case actions.VOTE_UPCOMING_DEBATE_SUCCESS: {
@@ -23,9 +27,11 @@ const reducer = (state = getInitialState, action) => {
       const index = votes.findIndex(id => id == userId);
       (index < 0) ? votes.push(userId)
                   : votes.splice(index, 1);
+      const sortedDebates = sort(debates);
+
       return {
         ...state,
-        debates
+        debates: sortedDebates
       }
     }
     default:
