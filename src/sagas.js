@@ -26,6 +26,11 @@ function* initSaga() {
   } catch (error) {
     yield put({ type: actions.INIT_FAIL, error });
   }
+
+  yield put(trackEvent({
+    category: 'Navigation',
+    action: 'User visited home page'
+  }));
 }
 
 function* debateUpvoteSaga({ userId, debateId, position }) {

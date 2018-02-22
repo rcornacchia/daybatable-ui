@@ -1,4 +1,6 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { getUpcomingDebates, voteUpcomingDebate } from './api';
+import { trackEvent } from '../../actions';
 import {
   GET_UPCOMING_DEBATES,
   GET_UPCOMING_DEBATES_SUCCESS,
@@ -7,7 +9,6 @@ import {
   VOTE_UPCOMING_DEBATE_SUCCESS,
   VOTE_UPCOMING_DEBATE_FAIL
 } from './actionTypes';
-import { getUpcomingDebates, voteUpcomingDebate } from './api';
 
 const rootSaga = function* rootSaga() {
   yield takeLatest(GET_UPCOMING_DEBATES, getUpcomingDebatesSaga)
@@ -21,6 +22,11 @@ function* getUpcomingDebatesSaga() {
   } catch (e) {
     yield put({ type: GET_UPCOMING_DEBATES_FAIL, e });
   }
+
+  yield put(trackEvent({
+    category: 'Upcoming Debates',
+    action: 'Navigated to upcoming debates page'
+  }));
 }
 
 function* voteUpcomingDebateSaga({ debateId }) {
@@ -33,6 +39,11 @@ function* voteUpcomingDebateSaga({ debateId }) {
   } catch (e) {
     yield put({ type: VOTE_UPCOMING_DEBATE_FAIL, e });
   }
+
+  yield put(trackEvent({
+    category: 'Upcoming Debates',
+    action: 'Upvoted or downvoted an upcoming debate'
+  }));
 }
 
 export default rootSaga;

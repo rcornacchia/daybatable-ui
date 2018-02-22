@@ -23,7 +23,6 @@ const reducer = (state = getInitialState, action) => {
       const index = votes.findIndex(id => id == userId);
       (index < 0) ? votes.push(userId)
                   : votes.splice(index, 1);
-      console.log(debate);
       return {
         ...state,
         debates
