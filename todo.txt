@@ -10,7 +10,6 @@ MVP:
   + add date ended to debate object
   + https://codepen.io/kindofone/pen/DkhAz?editors=1100
 - HTTPS
-- email signup for upcoming debates (we get this upon registration)
 - email password reset
 - automating the debate transition everyday at noon
 

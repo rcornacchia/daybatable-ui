@@ -30,8 +30,6 @@ class Login extends Component {
     const { warning } = this.state;
     const { message } = this.props;
 
-    console.log(this.props);
-
     return (
       <Card marginTop='20px'>
         <div className='login-container'>
@@ -53,9 +51,12 @@ class Login extends Component {
             </div>
             <span className='warning'>{warning}</span>
           </form>
-          <div className='login-error-message'>
-            <span className='warning'>{message}</span>
-          </div>
+          { message && (
+              <div className='login-error-message'>
+                <span className='warning'>{message}</span>
+              </div>
+            )
+          }
         </div>
       </Card>
     )

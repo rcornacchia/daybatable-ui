@@ -66,9 +66,12 @@ class Register extends Component {
             </div>
             <span className='warning'>{warning}</span>     
           </form>
-          <div className='register-error-message'>
-            <span className='warning'>{message}</span>
-          </div>
+          { message && (
+              <div className='register-error-message'>
+                <span className='warning'>{message}</span>
+              </div>
+            )
+          }
         </div>
       </Card>
     );
