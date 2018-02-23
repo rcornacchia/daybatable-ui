@@ -17,7 +17,7 @@ class Header extends Component {
           <Button>About</Button>
         </Link>
         <Link to='/create' className='link right-link'>
-          <Button>Add &nbsp;Debate</Button>
+          <Button>Suggest &nbsp;Debate</Button>
         </Link>
         <Link to='/upcoming' className='link right-link'>
           <Button>Upcoming &nbsp;Debates</Button>

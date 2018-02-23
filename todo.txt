@@ -1,17 +1,16 @@
 MVP:
-- websockets to share posts and activity in real time
+1. websockets to share posts and activity in real time
   + socket io saga
     - for emitting messages
     - for specific events from server
       + post creation
       + debate upvote/downvote
       + post upvote/downvote
-- Add timer til next debate
+2. Add timer til next debate
   + add date ended to debate object
-  + https://codepen.io/kindofone/pen/DkhAz?editors=1100
-- HTTPS
-- email password reset
-- automating the debate transition everyday at noon
+3. HTTPS
+4. email password reset
+5. automating the debate transition everyday at noon
 
 1.0:
 - move sorting of posts to reducer level so it doesn't occur every render
