@@ -1,7 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { submitPost } from './api';
-import socket from '../../socket';
 import * as actions from './actionTypes';
 import { trackEvent } from '../../actions';
 import { get } from 'lodash';

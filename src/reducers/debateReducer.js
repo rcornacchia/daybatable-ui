@@ -24,7 +24,7 @@ const debateReducer = (state = initialState, action) => {
         againstPosition
       };
     }
-    case actions.DEBATE_UPVOTE:
+    case actions.DEBATE_UPVOTE: {
       const { debateId, position, userId } = action;
       const newState = cloneDeep(state);
       const votesFor = newState.votesFor;
@@ -34,20 +34,43 @@ const debateReducer = (state = initialState, action) => {
       if (position === 'for') {
         // add userId to votesFor and remove from votesAgainst
         index = votesFor.findIndex(id => id === userId);
-        (index < 0) ? votesFor.push(userId)
-                    : votesFor.splice(index, 1);
+        if (index < 0) {
+          votesFor.push(userId)
+        }
         index = votesAgainst.findIndex(id => id === userId);
         if (index >= 0) votesAgainst.splice(index, 1);
       } else {
         // add to votesAgainst and remove from votesFor
         index = votesAgainst.findIndex(id => id === userId);
-        (index < 0) ? votesAgainst.push(userId)
-                    : votesAgainst.splice(index, 1);
+        if (index < 0) {
+          votesAgainst.push(userId)
+        }
         index = votesFor.findIndex(id => id === userId);
         if (index >= 0) votesFor.splice(index, 1);
       }
-      
       return newState;
+    }
+    case actions.DEBATE_DOWNVOTE: {
+      const { debateId, position, userId } = action;
+      const newState = cloneDeep(state);
+      const votesFor = newState.votesFor;
+      const votesAgainst = newState.votesAgainst;
+
+      if (position === 'for') {
+        // add userId to votesFor and remove from votesAgainst
+        let index = votesFor.findIndex(id => id === userId);
+        if (index > -1) {
+          votesFor.splice(index, 1);
+        }
+      } else {
+        // add to votesAgainst and remove from votesFor
+        let index = votesAgainst.findIndex(id => id === userId);
+        if (index > -1) {
+          votesAgainst.splice(index, 1);
+        }
+      }
+      return newState;
+    }
     default:
       return state;
   }

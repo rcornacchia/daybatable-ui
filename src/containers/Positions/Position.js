@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { notify } from 'react-notify-toast';
 import styled from 'styled-components';
-import socket from '../../socket';
-import { upvoteDebate } from './actions';
+import { upvoteDebate, downvoteDebate } from './actions';
 import { openPostForm, closePostForm } from '../PostForm/actions';
 import CrunchyButton from '../../components/CrunchyButton';
 import './Position.scss';
@@ -13,8 +12,6 @@ class Position extends React.Component {
     super(props);
     this.state = { btnType: 'unvoted' }
     this.openPostForm = (...args) => this._openPostForm.bind(this, ...args);
-    // socket.on('FromAPI', data => this.setState({ response: data }));
-    socket.emit('test');
   }
 
   warn = () => notify.show('Please register or login', 'error');  
@@ -26,10 +23,20 @@ class Position extends React.Component {
                       : this.warn();
   }
 
-  upvote = () => {
-    const { upvoteDebate, debate, position, userId } = this.props;
-    (userId) ? upvoteDebate(debate.debateId, position, userId)
-             : this.warn();
+  vote = () => {
+    const { debate, position, userId } = this.props;
+    if (!userId) {
+      this.warn();
+    } else {
+      console.log('test')
+      if (position === 'for' && debate.votesFor.find(id => id === userId)) {
+        this.props.downvoteDebate(debate.debateId, position, userId)
+      } else if (position === 'against' && debate.votesAgainst.find(id => id === userId)) {
+        this.props.downvoteDebate(debate.debateId, position, userId)
+      } else {
+        this.props.upvoteDebate(debate.debateId, position, userId);
+      }
+    }
   }
 
   render() {
@@ -55,7 +62,7 @@ class Position extends React.Component {
       <div className='position-container position'>
         <div className='left'>
           <div className='position-btn'>
-            <CrunchyButton type={btnType} action={this.upvote} size='small'>
+            <CrunchyButton type={btnType} action={this.vote} size='small'>
               {(btnType === 'unvoted') && <i className='material-icons material-icon'>keyboard_arrow_up</i>}
               {votes} {(votes !== 1) ? 'votes' : 'vote'}
             </CrunchyButton>
@@ -85,6 +92,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
   upvoteDebate: (debateId, position, userId) => dispatch(upvoteDebate(debateId, position, userId)),
+  downvoteDebate: (debateId, position, userId) => dispatch(downvoteDebate(debateId, position, userId)),
   openPostForm: (position, positionName) => dispatch(openPostForm(position, positionName)),
 });
 

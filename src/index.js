@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, IndexRoute, browserHistory, Router } from 'react-router';
 import ReactGA from 'react-ga';
+import io from 'socket.io-client';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers';
 import App from './App';
@@ -14,6 +15,7 @@ import PostsLayout from './layouts/PostsLayout';
 import UpcomingDebates from './containers/UpcomingDebates';
 import DevTools from './containers/DevTools';
 import CreateDebateForm from './containers/CreateDebateForm';
+import config from './config';
 
 // Google Analytics
 ReactGA.initialize('UA-106316218-1'); 
@@ -44,3 +46,9 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+const socket = io(config.socket);
+socket.on('post_created', post => store.dispatch({ type: 'POST_ADD', post }));
+socket.on('user_connected', () => console.log('user connected'));
+
+export default socket;

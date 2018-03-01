@@ -100,8 +100,11 @@ const postReducer = (state = initialState, action) => {
 }
 
 const addPost = (post, allPosts, forPosition, againstPosition) => {
-  (post.position == 'for') ? allPosts.for[post._id] = post
-                           : allPosts.against[post._id] = post;
+  if (post.position == 'for' && !allPosts.for[post._id]) {
+    allPosts.for[post._id] = post
+  } else if (post.position == 'against' && !allPosts.against[post._id]) {
+    allPosts.against[post._id] = post;
+  }
 }
 
 export default postReducer;

@@ -27,3 +27,8 @@ export const upvoteDebate = payload => {
   const url = `${config.server}/api/debate/upvote`;
   return post(url, payload);
 }
+
+export const downvoteDebate = payload => {
+  const url = `${config.server}/api/debate/downvote`;
+  return post(url, payload);
+}

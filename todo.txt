@@ -6,6 +6,7 @@ MVP:
       + post creation
       + debate upvote/downvote
       + post upvote/downvote
+  + number of live users on the site
 2. Add timer til next debate
   + add date ended to debate object
 3. HTTPS
